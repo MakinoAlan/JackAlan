@@ -97,6 +97,10 @@ var paw_scale = new THREE.Matrix4().set(2,0,0,0, 0,0.8,0,0, 0,0,2,0, 0,0,0,1);
 var paw_geo = makeCube();
 paw_geo.applyMatrix(paw_scale);
 
+var claw_scale = new THREE.Matrix4().set(0.3,0,0,0, 0,0.3,0,0, 0,0,2,0, 0,0,0,1);
+var claw_geo = makeCube();
+claw_geo.applyMatrix(claw_scale);
+
 // MATRICES
 // var torsoMatrix = new THREE.Matrix4().set(1,0,0,0, 0,1,0,2.5, 0,0,1,0, 0,0,0,1);
 var torsoMatrix = new THREE.Matrix4().set(1,0,0,0, 0,1,0,2.5, 0,0,1,0, 0,0,0,1);
@@ -127,14 +131,60 @@ var head_pos_abs = new THREE.Matrix4().multiplyMatrices(torsoMatrix,head_pos);
 var l_front_paw_pos = new THREE.Matrix4().set(1,0,0,0, 0,1,0,-2.1, 0,0,1,1, 0,0,0,1);
 var l_front_paw_pos_abs = new THREE.Matrix4().multiplyMatrices(l_hand_pos_abs,l_front_paw_pos);
 
+var l_front_paw_claw_pos1 = new THREE.Matrix4().set(1,0,0,0, 0,1,0,0, 0,0,1,1, 0,0,0,1);
+var l_front_paw_claw_pos1_abs = new THREE.Matrix4().multiplyMatrices(l_front_paw_pos_abs,l_front_paw_claw_pos1);
+var l_front_paw_claw_pos2 = new THREE.Matrix4().set(1,0,0,0.4, 0,1,0,0, 0,0,1,1, 0,0,0,1);
+var l_front_paw_claw_pos2_abs = new THREE.Matrix4().multiplyMatrices(l_front_paw_pos_abs,l_front_paw_claw_pos2);
+var l_front_paw_claw_pos3 = new THREE.Matrix4().set(1,0,0,0.8, 0,1,0,0, 0,0,1,1, 0,0,0,1);
+var l_front_paw_claw_pos3_abs = new THREE.Matrix4().multiplyMatrices(l_front_paw_pos_abs,l_front_paw_claw_pos3);
+var l_front_paw_claw_pos4 = new THREE.Matrix4().set(1,0,0,0.-0.4, 0,1,0,0, 0,0,1,1, 0,0,0,1);
+var l_front_paw_claw_pos4_abs = new THREE.Matrix4().multiplyMatrices(l_front_paw_pos_abs,l_front_paw_claw_pos4);
+var l_front_paw_claw_pos5 = new THREE.Matrix4().set(1,0,0,0.-0.8, 0,1,0,0, 0,0,1,1, 0,0,0,1);
+var l_front_paw_claw_pos5_abs = new THREE.Matrix4().multiplyMatrices(l_front_paw_pos_abs,l_front_paw_claw_pos5);
+
+
 var r_front_paw_pos = new THREE.Matrix4().set(-1,0,0,0, 0,1,0,-2.1, 0,0,1,1, 0,0,0,1);
 var r_front_paw_pos_abs = new THREE.Matrix4().multiplyMatrices(r_hand_pos_abs,r_front_paw_pos);
+
+var r_front_paw_claw_pos1 = new THREE.Matrix4().set(1,0,0,0, 0,1,0,0, 0,0,1,1, 0,0,0,1);
+var r_front_paw_claw_pos1_abs = new THREE.Matrix4().multiplyMatrices(r_front_paw_pos_abs,r_front_paw_claw_pos1);
+var r_front_paw_claw_pos2 = new THREE.Matrix4().set(1,0,0,0.4, 0,1,0,0, 0,0,1,1, 0,0,0,1);
+var r_front_paw_claw_pos2_abs = new THREE.Matrix4().multiplyMatrices(r_front_paw_pos_abs,r_front_paw_claw_pos2);
+var r_front_paw_claw_pos3 = new THREE.Matrix4().set(1,0,0,0.8, 0,1,0,0, 0,0,1,1, 0,0,0,1);
+var r_front_paw_claw_pos3_abs = new THREE.Matrix4().multiplyMatrices(r_front_paw_pos_abs,r_front_paw_claw_pos3);
+var r_front_paw_claw_pos4 = new THREE.Matrix4().set(1,0,0,0.-0.4, 0,1,0,0, 0,0,1,1, 0,0,0,1);
+var r_front_paw_claw_pos4_abs = new THREE.Matrix4().multiplyMatrices(r_front_paw_pos_abs,r_front_paw_claw_pos4);
+var r_front_paw_claw_pos5 = new THREE.Matrix4().set(1,0,0,0.-0.8, 0,1,0,0, 0,0,1,1, 0,0,0,1);
+var r_front_paw_claw_pos5_abs = new THREE.Matrix4().multiplyMatrices(r_front_paw_pos_abs,r_front_paw_claw_pos5);
 
 var l_rare_paw_pos = new THREE.Matrix4().set(1,0,0,0, 0,1,0,-2.1, 0,0,1,0.5, 0,0,0,1);
 var l_rare_paw_pos_abs = new THREE.Matrix4().multiplyMatrices(l_foot_pos_abs,l_rare_paw_pos);
 
+var l_rare_paw_claw_pos1 = new THREE.Matrix4().set(1,0,0,0, 0,1,0,0, 0,0,1,1, 0,0,0,1);
+var l_rare_paw_claw_pos1_abs = new THREE.Matrix4().multiplyMatrices(l_rare_paw_pos_abs,l_rare_paw_claw_pos1);
+var l_rare_paw_claw_pos2 = new THREE.Matrix4().set(1,0,0,0.4, 0,1,0,0, 0,0,1,1, 0,0,0,1);
+var l_rare_paw_claw_pos2_abs = new THREE.Matrix4().multiplyMatrices(l_rare_paw_pos_abs,l_rare_paw_claw_pos2);
+var l_rare_paw_claw_pos3 = new THREE.Matrix4().set(1,0,0,0.8, 0,1,0,0, 0,0,1,1, 0,0,0,1);
+var l_rare_paw_claw_pos3_abs = new THREE.Matrix4().multiplyMatrices(l_rare_paw_pos_abs,l_rare_paw_claw_pos3);
+var l_rare_paw_claw_pos4 = new THREE.Matrix4().set(1,0,0,0.-0.4, 0,1,0,0, 0,0,1,1, 0,0,0,1);
+var l_rare_paw_claw_pos4_abs = new THREE.Matrix4().multiplyMatrices(l_rare_paw_pos_abs,l_rare_paw_claw_pos4);
+var l_rare_paw_claw_pos5 = new THREE.Matrix4().set(1,0,0,0.-0.8, 0,1,0,0, 0,0,1,1, 0,0,0,1);
+var l_rare_paw_claw_pos5_abs = new THREE.Matrix4().multiplyMatrices(l_rare_paw_pos_abs,l_rare_paw_claw_pos5);
+
 var r_rare_paw_pos = new THREE.Matrix4().set(-1,0,0,0, 0,1,0,-2.1, 0,0,1,0.5, 0,0,0,1);
 var r_rare_paw_pos_abs = new THREE.Matrix4().multiplyMatrices(r_foot_pos_abs,r_rare_paw_pos);
+
+var r_rare_paw_claw_pos1 = new THREE.Matrix4().set(1,0,0,0, 0,1,0,0, 0,0,1,1, 0,0,0,1);
+var r_rare_paw_claw_pos1_abs = new THREE.Matrix4().multiplyMatrices(r_rare_paw_pos_abs,r_rare_paw_claw_pos1);
+var r_rare_paw_claw_pos2 = new THREE.Matrix4().set(1,0,0,0.4, 0,1,0,0, 0,0,1,1, 0,0,0,1);
+var r_rare_paw_claw_pos2_abs = new THREE.Matrix4().multiplyMatrices(r_rare_paw_pos_abs,r_rare_paw_claw_pos2);
+var r_rare_paw_claw_pos3 = new THREE.Matrix4().set(1,0,0,0.8, 0,1,0,0, 0,0,1,1, 0,0,0,1);
+var r_rare_paw_claw_pos3_abs = new THREE.Matrix4().multiplyMatrices(r_rare_paw_pos_abs,r_rare_paw_claw_pos3);
+var r_rare_paw_claw_pos4 = new THREE.Matrix4().set(1,0,0,0.-0.4, 0,1,0,0, 0,0,1,1, 0,0,0,1);
+var r_rare_paw_claw_pos4_abs = new THREE.Matrix4().multiplyMatrices(r_rare_paw_pos_abs,r_rare_paw_claw_pos4);
+var r_rare_paw_claw_pos5 = new THREE.Matrix4().set(1,0,0,0.-0.8, 0,1,0,0, 0,0,1,1, 0,0,0,1);
+var r_rare_paw_claw_pos5_abs = new THREE.Matrix4().multiplyMatrices(r_rare_paw_pos_abs,r_rare_paw_claw_pos5);
+
 
 // CREATE BODY
 var torso = new THREE.Mesh(torsoGeometry,normalMaterial);
@@ -151,6 +201,22 @@ scene.add(l_hand);
 var l_front_paw = new THREE.Mesh(paw_geo,normalMaterial);
 l_front_paw.setMatrix(l_front_paw_pos_abs);
 scene.add(l_front_paw);
+/*front-left paw's 5 claws */
+var l_front_paw_claw1 = new THREE.Mesh(claw_geo,normalMaterial);
+l_front_paw_claw1.setMatrix(l_front_paw_claw_pos1_abs);
+scene.add(l_front_paw_claw1);
+var l_front_paw_claw2 = new THREE.Mesh(claw_geo,normalMaterial);
+l_front_paw_claw2.setMatrix(l_front_paw_claw_pos2_abs);
+scene.add(l_front_paw_claw2);
+var l_front_paw_claw3 = new THREE.Mesh(claw_geo,normalMaterial);
+l_front_paw_claw3.setMatrix(l_front_paw_claw_pos3_abs);
+scene.add(l_front_paw_claw3);
+var l_front_paw_claw4 = new THREE.Mesh(claw_geo,normalMaterial);
+l_front_paw_claw4.setMatrix(l_front_paw_claw_pos4_abs);
+scene.add(l_front_paw_claw4);
+var l_front_paw_claw5 = new THREE.Mesh(claw_geo,normalMaterial);
+l_front_paw_claw5.setMatrix(l_front_paw_claw_pos5_abs);
+scene.add(l_front_paw_claw5);
 
 var l_foot = new THREE.Mesh(l_hand_geo,normalMaterial);
 l_foot.setMatrix(l_foot_pos_abs);
@@ -160,6 +226,22 @@ var l_rare_paw = new THREE.Mesh(paw_geo,normalMaterial);
 l_rare_paw.setMatrix(l_rare_paw_pos_abs);
 scene.add(l_rare_paw);
 
+var l_rare_paw_claw1 = new THREE.Mesh(claw_geo,normalMaterial);
+l_rare_paw_claw1.setMatrix(l_rare_paw_claw_pos1_abs);
+scene.add(l_rare_paw_claw1);
+var l_rare_paw_claw2 = new THREE.Mesh(claw_geo,normalMaterial);
+l_rare_paw_claw2.setMatrix(l_rare_paw_claw_pos2_abs);
+scene.add(l_rare_paw_claw2);
+var l_rare_paw_claw3 = new THREE.Mesh(claw_geo,normalMaterial);
+l_rare_paw_claw3.setMatrix(l_rare_paw_claw_pos3_abs);
+scene.add(l_rare_paw_claw3);
+var l_rare_paw_claw4 = new THREE.Mesh(claw_geo,normalMaterial);
+l_rare_paw_claw4.setMatrix(l_rare_paw_claw_pos4_abs);
+scene.add(l_rare_paw_claw4);
+var l_rare_paw_claw5 = new THREE.Mesh(claw_geo,normalMaterial);
+l_rare_paw_claw5.setMatrix(l_rare_paw_claw_pos5_abs);
+scene.add(l_rare_paw_claw5);
+
 var r_hand = new THREE.Mesh(l_hand_geo,normalMaterial);
 r_hand.setMatrix(r_hand_pos_abs);
 scene.add(r_hand);
@@ -168,6 +250,22 @@ var r_front_paw = new THREE.Mesh(paw_geo,normalMaterial);
 r_front_paw.setMatrix(r_front_paw_pos_abs);
 scene.add(r_front_paw);
 
+var r_front_paw_claw1 = new THREE.Mesh(claw_geo,normalMaterial);
+r_front_paw_claw1.setMatrix(r_front_paw_claw_pos1_abs);
+scene.add(r_front_paw_claw1);
+var r_front_paw_claw2 = new THREE.Mesh(claw_geo,normalMaterial);
+r_front_paw_claw2.setMatrix(r_front_paw_claw_pos2_abs);
+scene.add(r_front_paw_claw2);
+var r_front_paw_claw3 = new THREE.Mesh(claw_geo,normalMaterial);
+r_front_paw_claw3.setMatrix(r_front_paw_claw_pos3_abs);
+scene.add(r_front_paw_claw3);
+var r_front_paw_claw4 = new THREE.Mesh(claw_geo,normalMaterial);
+r_front_paw_claw4.setMatrix(r_front_paw_claw_pos4_abs);
+scene.add(r_front_paw_claw4);
+var r_front_paw_claw5 = new THREE.Mesh(claw_geo,normalMaterial);
+r_front_paw_claw5.setMatrix(r_front_paw_claw_pos5_abs);
+scene.add(r_front_paw_claw5);
+
 var r_foot = new THREE.Mesh(l_hand_geo,normalMaterial);
 r_foot.setMatrix(r_foot_pos_abs);
 scene.add(r_foot);
@@ -175,6 +273,22 @@ scene.add(r_foot);
 var r_rare_paw = new THREE.Mesh(paw_geo,normalMaterial);
 r_rare_paw.setMatrix(r_rare_paw_pos_abs);
 scene.add(r_rare_paw);
+
+var r_rare_paw_claw1 = new THREE.Mesh(claw_geo,normalMaterial);
+r_rare_paw_claw1.setMatrix(r_rare_paw_claw_pos1_abs);
+scene.add(r_rare_paw_claw1);
+var r_rare_paw_claw2 = new THREE.Mesh(claw_geo,normalMaterial);
+r_rare_paw_claw2.setMatrix(r_rare_paw_claw_pos2_abs);
+scene.add(r_rare_paw_claw2);
+var r_rare_paw_claw3 = new THREE.Mesh(claw_geo,normalMaterial);
+r_rare_paw_claw3.setMatrix(r_rare_paw_claw_pos3_abs);
+scene.add(r_rare_paw_claw3);
+var r_rare_paw_claw4 = new THREE.Mesh(claw_geo,normalMaterial);
+r_rare_paw_claw4.setMatrix(r_rare_paw_claw_pos4_abs);
+scene.add(r_rare_paw_claw4);
+var r_rare_paw_claw5 = new THREE.Mesh(claw_geo,normalMaterial);
+r_rare_paw_claw5.setMatrix(r_rare_paw_claw_pos5_abs);
+scene.add(r_rare_paw_claw5);
 
 var tail = new THREE.Mesh(tail_geo,normalMaterial);
 tail.setMatrix(tail_pos_abs);
@@ -248,23 +362,68 @@ function updateBody() {
       var l_front_paw_rot = new THREE.Matrix4().multiplyMatrices(l_hand_rot,l_front_paw_pos);
       l_front_paw.setMatrix(l_front_paw_rot);
 
+      var l_front_paw_claw1_rot = new THREE.Matrix4().multiplyMatrices(l_front_paw_rot,l_front_paw_claw_pos1);
+      l_front_paw_claw1.setMatrix(l_front_paw_claw1_rot);
+      var l_front_paw_claw2_rot = new THREE.Matrix4().multiplyMatrices(l_front_paw_rot,l_front_paw_claw_pos2);
+      l_front_paw_claw2.setMatrix(l_front_paw_claw2_rot);
+      var l_front_paw_claw3_rot = new THREE.Matrix4().multiplyMatrices(l_front_paw_rot,l_front_paw_claw_pos3);
+      l_front_paw_claw3.setMatrix(l_front_paw_claw3_rot);
+      var l_front_paw_claw4_rot = new THREE.Matrix4().multiplyMatrices(l_front_paw_rot,l_front_paw_claw_pos4);
+      l_front_paw_claw4.setMatrix(l_front_paw_claw4_rot);
+      var l_front_paw_claw5_rot = new THREE.Matrix4().multiplyMatrices(l_front_paw_rot,l_front_paw_claw_pos5);
+      l_front_paw_claw5.setMatrix(l_front_paw_claw5_rot);
+
       var r_hand_rot = new THREE.Matrix4().multiplyMatrices(torsoRotMatrix,r_hand_pos);
       r_hand.setMatrix(r_hand_rot); 
 
       var r_front_paw_rot = new THREE.Matrix4().multiplyMatrices(r_hand_rot,r_front_paw_pos);
       r_front_paw.setMatrix(r_front_paw_rot);
+
+      var r_front_paw_claw1_rot = new THREE.Matrix4().multiplyMatrices(r_front_paw_rot,r_front_paw_claw_pos1);
+      r_front_paw_claw1.setMatrix(r_front_paw_claw1_rot);
+      var r_front_paw_claw2_rot = new THREE.Matrix4().multiplyMatrices(r_front_paw_rot,r_front_paw_claw_pos2);
+      r_front_paw_claw2.setMatrix(r_front_paw_claw2_rot);
+      var r_front_paw_claw3_rot = new THREE.Matrix4().multiplyMatrices(r_front_paw_rot,r_front_paw_claw_pos3);
+      r_front_paw_claw3.setMatrix(r_front_paw_claw3_rot);
+      var r_front_paw_claw4_rot = new THREE.Matrix4().multiplyMatrices(r_front_paw_rot,r_front_paw_claw_pos4);
+      r_front_paw_claw4.setMatrix(r_front_paw_claw4_rot);
+      var r_front_paw_claw5_rot = new THREE.Matrix4().multiplyMatrices(r_front_paw_rot,r_front_paw_claw_pos5);
+      r_front_paw_claw5.setMatrix(r_front_paw_claw5_rot);
+
       
       var l_foot_rot = new THREE.Matrix4().multiplyMatrices(torsoRotMatrix,l_foot_pos);
       l_foot.setMatrix(l_foot_rot); 
 
       var l_rare_paw_rot = new THREE.Matrix4().multiplyMatrices(l_foot_rot,l_rare_paw_pos);
       l_rare_paw.setMatrix(l_rare_paw_rot);
+
+      var l_rare_paw_claw1_rot = new THREE.Matrix4().multiplyMatrices(l_rare_paw_rot,l_rare_paw_claw_pos1);
+      l_rare_paw_claw1.setMatrix(l_rare_paw_claw1_rot);
+      var l_rare_paw_claw2_rot = new THREE.Matrix4().multiplyMatrices(l_rare_paw_rot,l_rare_paw_claw_pos2);
+      l_rare_paw_claw2.setMatrix(l_rare_paw_claw2_rot);
+      var l_rare_paw_claw3_rot = new THREE.Matrix4().multiplyMatrices(l_rare_paw_rot,l_rare_paw_claw_pos3);
+      l_rare_paw_claw3.setMatrix(l_rare_paw_claw3_rot);
+      var l_rare_paw_claw4_rot = new THREE.Matrix4().multiplyMatrices(l_rare_paw_rot,l_rare_paw_claw_pos4);
+      l_rare_paw_claw4.setMatrix(l_rare_paw_claw4_rot);
+      var l_rare_paw_claw5_rot = new THREE.Matrix4().multiplyMatrices(l_rare_paw_rot,l_rare_paw_claw_pos5);
+      l_rare_paw_claw5.setMatrix(l_rare_paw_claw5_rot);
       
       var r_foot_rot = new THREE.Matrix4().multiplyMatrices(torsoRotMatrix,r_foot_pos);
       r_foot.setMatrix(r_foot_rot); 
 
       var r_rare_paw_rot = new THREE.Matrix4().multiplyMatrices(r_foot_rot,r_rare_paw_pos);
       r_rare_paw.setMatrix(r_rare_paw_rot);
+
+      var r_rare_paw_claw1_rot = new THREE.Matrix4().multiplyMatrices(r_rare_paw_rot,r_rare_paw_claw_pos1);
+      r_rare_paw_claw1.setMatrix(r_rare_paw_claw1_rot);
+      var r_rare_paw_claw2_rot = new THREE.Matrix4().multiplyMatrices(r_rare_paw_rot,r_rare_paw_claw_pos2);
+      r_rare_paw_claw2.setMatrix(r_rare_paw_claw2_rot);
+      var r_rare_paw_claw3_rot = new THREE.Matrix4().multiplyMatrices(r_rare_paw_rot,r_rare_paw_claw_pos3);
+      r_rare_paw_claw3.setMatrix(r_rare_paw_claw3_rot);
+      var r_rare_paw_claw4_rot = new THREE.Matrix4().multiplyMatrices(r_rare_paw_rot,r_rare_paw_claw_pos4);
+      r_rare_paw_claw4.setMatrix(r_rare_paw_claw4_rot);
+      var r_rare_paw_claw5_rot = new THREE.Matrix4().multiplyMatrices(r_rare_paw_rot,r_rare_paw_claw_pos5);
+      r_rare_paw_claw5.setMatrix(r_rare_paw_claw5_rot);
 
       var tail_rot = new THREE.Matrix4().multiplyMatrices(torsoRotMatrix,tail_pos);
       tail.setMatrix(tail_rot);
