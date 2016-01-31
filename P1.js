@@ -446,6 +446,110 @@ function updateBody() {
       nose.setMatrix(nose_rot);
       break;
 
+      case(key == "D" && animate):
+      var time = clock.getElapsedTime(); // t seconds passed since the clock started.
+
+      if (time > time_end){
+        p = p1;
+        animate = false;
+        break;
+      }
+
+      if (smooth){
+        p = (p1 - p0)*((time-time_start)/time_length) + p0; // current frame 
+      }
+      else{p = p1;
+      }
+      
+
+
+      var rotateZ = new THREE.Matrix4().set(1,        0,         0,        0, 
+                                            0, Math.cos(p),-Math.sin(p), 0, 
+                                            0, Math.sin(p), Math.cos(p), 0,
+                                            0,        0,         0,        1);
+
+      var torsoRotMatrix = new THREE.Matrix4().multiplyMatrices(torsoMatrix,rotateZ);
+      torso.setMatrix(torsoRotMatrix);
+
+      var l_hand_rot = new THREE.Matrix4().multiplyMatrices(torsoRotMatrix,l_hand_pos);
+      l_hand.setMatrix(l_hand_rot); 
+
+      var l_front_paw_rot = new THREE.Matrix4().multiplyMatrices(l_hand_rot,l_front_paw_pos);
+      l_front_paw.setMatrix(l_front_paw_rot);
+
+      var l_front_paw_claw1_rot = new THREE.Matrix4().multiplyMatrices(l_front_paw_rot,l_front_paw_claw_pos1);
+      l_front_paw_claw1.setMatrix(l_front_paw_claw1_rot);
+      var l_front_paw_claw2_rot = new THREE.Matrix4().multiplyMatrices(l_front_paw_rot,l_front_paw_claw_pos2);
+      l_front_paw_claw2.setMatrix(l_front_paw_claw2_rot);
+      var l_front_paw_claw3_rot = new THREE.Matrix4().multiplyMatrices(l_front_paw_rot,l_front_paw_claw_pos3);
+      l_front_paw_claw3.setMatrix(l_front_paw_claw3_rot);
+      var l_front_paw_claw4_rot = new THREE.Matrix4().multiplyMatrices(l_front_paw_rot,l_front_paw_claw_pos4);
+      l_front_paw_claw4.setMatrix(l_front_paw_claw4_rot);
+      var l_front_paw_claw5_rot = new THREE.Matrix4().multiplyMatrices(l_front_paw_rot,l_front_paw_claw_pos5);
+      l_front_paw_claw5.setMatrix(l_front_paw_claw5_rot);
+
+      var r_hand_rot = new THREE.Matrix4().multiplyMatrices(torsoRotMatrix,r_hand_pos);
+      r_hand.setMatrix(r_hand_rot); 
+
+      var r_front_paw_rot = new THREE.Matrix4().multiplyMatrices(r_hand_rot,r_front_paw_pos);
+      r_front_paw.setMatrix(r_front_paw_rot);
+
+      var r_front_paw_claw1_rot = new THREE.Matrix4().multiplyMatrices(r_front_paw_rot,r_front_paw_claw_pos1);
+      r_front_paw_claw1.setMatrix(r_front_paw_claw1_rot);
+      var r_front_paw_claw2_rot = new THREE.Matrix4().multiplyMatrices(r_front_paw_rot,r_front_paw_claw_pos2);
+      r_front_paw_claw2.setMatrix(r_front_paw_claw2_rot);
+      var r_front_paw_claw3_rot = new THREE.Matrix4().multiplyMatrices(r_front_paw_rot,r_front_paw_claw_pos3);
+      r_front_paw_claw3.setMatrix(r_front_paw_claw3_rot);
+      var r_front_paw_claw4_rot = new THREE.Matrix4().multiplyMatrices(r_front_paw_rot,r_front_paw_claw_pos4);
+      r_front_paw_claw4.setMatrix(r_front_paw_claw4_rot);
+      var r_front_paw_claw5_rot = new THREE.Matrix4().multiplyMatrices(r_front_paw_rot,r_front_paw_claw_pos5);
+      r_front_paw_claw5.setMatrix(r_front_paw_claw5_rot);
+
+      
+      var l_foot_rot = new THREE.Matrix4().multiplyMatrices(torsoRotMatrix,l_foot_pos);
+      l_foot.setMatrix(l_foot_rot); 
+
+      var l_rare_paw_rot = new THREE.Matrix4().multiplyMatrices(l_foot_rot,l_rare_paw_pos);
+      l_rare_paw.setMatrix(l_rare_paw_rot);
+
+      var l_rare_paw_claw1_rot = new THREE.Matrix4().multiplyMatrices(l_rare_paw_rot,l_rare_paw_claw_pos1);
+      l_rare_paw_claw1.setMatrix(l_rare_paw_claw1_rot);
+      var l_rare_paw_claw2_rot = new THREE.Matrix4().multiplyMatrices(l_rare_paw_rot,l_rare_paw_claw_pos2);
+      l_rare_paw_claw2.setMatrix(l_rare_paw_claw2_rot);
+      var l_rare_paw_claw3_rot = new THREE.Matrix4().multiplyMatrices(l_rare_paw_rot,l_rare_paw_claw_pos3);
+      l_rare_paw_claw3.setMatrix(l_rare_paw_claw3_rot);
+      var l_rare_paw_claw4_rot = new THREE.Matrix4().multiplyMatrices(l_rare_paw_rot,l_rare_paw_claw_pos4);
+      l_rare_paw_claw4.setMatrix(l_rare_paw_claw4_rot);
+      var l_rare_paw_claw5_rot = new THREE.Matrix4().multiplyMatrices(l_rare_paw_rot,l_rare_paw_claw_pos5);
+      l_rare_paw_claw5.setMatrix(l_rare_paw_claw5_rot);
+      
+      var r_foot_rot = new THREE.Matrix4().multiplyMatrices(torsoRotMatrix,r_foot_pos);
+      r_foot.setMatrix(r_foot_rot); 
+
+      var r_rare_paw_rot = new THREE.Matrix4().multiplyMatrices(r_foot_rot,r_rare_paw_pos);
+      r_rare_paw.setMatrix(r_rare_paw_rot);
+
+      var r_rare_paw_claw1_rot = new THREE.Matrix4().multiplyMatrices(r_rare_paw_rot,r_rare_paw_claw_pos1);
+      r_rare_paw_claw1.setMatrix(r_rare_paw_claw1_rot);
+      var r_rare_paw_claw2_rot = new THREE.Matrix4().multiplyMatrices(r_rare_paw_rot,r_rare_paw_claw_pos2);
+      r_rare_paw_claw2.setMatrix(r_rare_paw_claw2_rot);
+      var r_rare_paw_claw3_rot = new THREE.Matrix4().multiplyMatrices(r_rare_paw_rot,r_rare_paw_claw_pos3);
+      r_rare_paw_claw3.setMatrix(r_rare_paw_claw3_rot);
+      var r_rare_paw_claw4_rot = new THREE.Matrix4().multiplyMatrices(r_rare_paw_rot,r_rare_paw_claw_pos4);
+      r_rare_paw_claw4.setMatrix(r_rare_paw_claw4_rot);
+      var r_rare_paw_claw5_rot = new THREE.Matrix4().multiplyMatrices(r_rare_paw_rot,r_rare_paw_claw_pos5);
+      r_rare_paw_claw5.setMatrix(r_rare_paw_claw5_rot);
+
+      var tail_rot = new THREE.Matrix4().multiplyMatrices(torsoRotMatrix,tail_pos);
+      tail.setMatrix(tail_rot);
+
+      var head_rot = new THREE.Matrix4().multiplyMatrices(torsoRotMatrix,head_pos);
+      head.setMatrix(head_rot);
+
+      var nose_rot = new THREE.Matrix4().multiplyMatrices(head_rot,nose_pos);
+      nose.setMatrix(nose_rot);
+      break;
+
 
 
       // TO-DO: IMPLEMENT JUMPCUT/ANIMATION FOR EACH KEY!
@@ -475,6 +579,8 @@ keyboard.domElement.addEventListener('keydown',function(event){
     camera.lookAt(scene.position);}
   else if(keyboard.eventMatches(event,"U")){ 
     (key == "U")? init_animation(p1,p0,time_length) : (init_animation(0,Math.PI/4,1), key = "U")}
+  else if(keyboard.eventMatches(event,"D")){ 
+    (key == "D")? init_animation(p1,p0,time_length) : (init_animation(0,Math.PI/4,1), key = "D")}
   else if(keyboard.eventMatches(event," ")){
      smooth = !smooth;
   }
