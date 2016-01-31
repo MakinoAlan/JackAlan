@@ -109,6 +109,10 @@ var ten_big_scale = new THREE.Matrix4().set(0.15,0,0,0, 0,0.15,0,0, 0,0,4,0, 0,0
 var ten_big_geo = makeCube();
 ten_big_geo.applyMatrix(ten_big_scale);
 
+var ten_small_scale = new THREE.Matrix4().set(0.2,0,0,0, 0,0.2,0,0, 0,0,2.5,0, 0,0,0,1);
+var ten_small_geo = makeCube();
+ten_small_geo.applyMatrix(ten_small_scale);
+
 // MATRICES
 // var torsoMatrix = new THREE.Matrix4().set(1,0,0,0, 0,1,0,2.5, 0,0,1,0, 0,0,0,1);
 var torsoMatrix = new THREE.Matrix4().set(1,0,0,0, 0,1,0,5, 0,0,1,0, 0,0,0,1);
@@ -153,6 +157,15 @@ var l_ten_big6_pos = new THREE.Matrix4().set(1,0,0,0.9, 0,1,0,-0.6, 0,0,1,2, 0,0
 var l_ten_big6_pos_abs = new THREE.Matrix4().multiplyMatrices(nose_pos_abs,l_ten_big6_pos);
 var l_ten_big7_pos = new THREE.Matrix4().set(1,0,0,0.9, 0,1,0,-0.9, 0,0,1,2, 0,0,0,1);
 var l_ten_big7_pos_abs = new THREE.Matrix4().multiplyMatrices(nose_pos_abs,l_ten_big7_pos);
+var l_ten_big8_pos = new THREE.Matrix4().set(1,0,0,0.6, 0,1,0,-0.9, 0,0,1,2, 0,0,0,1);
+var l_ten_big8_pos_abs = new THREE.Matrix4().multiplyMatrices(nose_pos_abs,l_ten_big8_pos);
+var l_ten_big9_pos = new THREE.Matrix4().set(1,0,0,0.6, 0,1,0,0.9, 0,0,1,2, 0,0,0,1);
+var l_ten_big9_pos_abs = new THREE.Matrix4().multiplyMatrices(nose_pos_abs,l_ten_big9_pos);
+var l_ten_samll1_pos = new THREE.Matrix4().set(1,0,0,0.3, 0,1,0,-0.9, 0,0,1,2, 0,0,0,1);
+var l_ten_samll1_pos_abs = new THREE.Matrix4().multiplyMatrices(nose_pos_abs,l_ten_samll1_pos);
+var l_ten_samll2_pos = new THREE.Matrix4().set(1,0,0,0.3, 0,1,0,0.9, 0,0,1,2, 0,0,0,1);
+var l_ten_samll2_pos_abs = new THREE.Matrix4().multiplyMatrices(nose_pos_abs,l_ten_samll2_pos);
+
 
 var r_ten_big1_pos = new THREE.Matrix4().set(1,0,0,-0.9, 0,1,0,0, 0,0,1,2, 0,0,0,1);
 var r_ten_big1_pos_abs = new THREE.Matrix4().multiplyMatrices(nose_pos_abs,r_ten_big1_pos);
@@ -168,6 +181,14 @@ var r_ten_big6_pos = new THREE.Matrix4().set(1,0,0,-0.9, 0,1,0,-0.6, 0,0,1,2, 0,
 var r_ten_big6_pos_abs = new THREE.Matrix4().multiplyMatrices(nose_pos_abs,r_ten_big6_pos);
 var r_ten_big7_pos = new THREE.Matrix4().set(1,0,0,-0.9, 0,1,0,-0.9, 0,0,1,2, 0,0,0,1);
 var r_ten_big7_pos_abs = new THREE.Matrix4().multiplyMatrices(nose_pos_abs,r_ten_big7_pos);
+var r_ten_big8_pos = new THREE.Matrix4().set(1,0,0,-0.6, 0,1,0,-0.9, 0,0,1,2, 0,0,0,1);
+var r_ten_big8_pos_abs = new THREE.Matrix4().multiplyMatrices(nose_pos_abs,r_ten_big8_pos);
+var r_ten_big9_pos = new THREE.Matrix4().set(1,0,0,-0.6, 0,1,0,0.9, 0,0,1,2, 0,0,0,1);
+var r_ten_big9_pos_abs = new THREE.Matrix4().multiplyMatrices(nose_pos_abs,r_ten_big9_pos);
+var r_ten_samll1_pos = new THREE.Matrix4().set(1,0,0,-0.3, 0,1,0,-0.9, 0,0,1,2, 0,0,0,1);
+var r_ten_samll1_pos_abs = new THREE.Matrix4().multiplyMatrices(nose_pos_abs,r_ten_samll1_pos);
+var r_ten_samll2_pos = new THREE.Matrix4().set(1,0,0,-0.3, 0,1,0,0.9, 0,0,1,2, 0,0,0,1);
+var r_ten_samll2_pos_abs = new THREE.Matrix4().multiplyMatrices(nose_pos_abs,r_ten_samll2_pos);
 
 var l_front_paw_pos = new THREE.Matrix4().set(1,0,0,0, 0,1,0,-2.1, 0,0,1,1, 0,0,0,1);
 var l_front_paw_pos_abs = new THREE.Matrix4().multiplyMatrices(l_hand_pos_abs,l_front_paw_pos);
@@ -364,6 +385,18 @@ scene.add(l_ten_big6);
 var l_ten_big7 = new THREE.Mesh(ten_big_geo,normalMaterial);
 l_ten_big7.setMatrix(l_ten_big7_pos_abs);
 scene.add(l_ten_big7);
+var l_ten_big8 = new THREE.Mesh(ten_big_geo,normalMaterial);
+l_ten_big8.setMatrix(l_ten_big8_pos_abs);
+scene.add(l_ten_big8);
+var l_ten_big9 = new THREE.Mesh(ten_big_geo,normalMaterial);
+l_ten_big9.setMatrix(l_ten_big9_pos_abs);
+scene.add(l_ten_big9);
+var l_ten_small1 = new THREE.Mesh(ten_small_geo,normalMaterial);
+l_ten_small1.setMatrix(l_ten_samll1_pos_abs); 
+scene.add(l_ten_small1);
+var l_ten_small2 = new THREE.Mesh(ten_small_geo,normalMaterial);
+l_ten_small2.setMatrix(l_ten_samll2_pos_abs);
+scene.add(l_ten_small2);
 
 var r_ten_big1 = new THREE.Mesh(ten_big_geo,normalMaterial);
 r_ten_big1.setMatrix(r_ten_big1_pos_abs);
@@ -386,6 +419,18 @@ scene.add(r_ten_big6);
 var r_ten_big7 = new THREE.Mesh(ten_big_geo,normalMaterial);
 r_ten_big7.setMatrix(r_ten_big7_pos_abs);
 scene.add(r_ten_big7);
+var r_ten_big8 = new THREE.Mesh(ten_big_geo,normalMaterial);
+r_ten_big8.setMatrix(r_ten_big8_pos_abs);
+scene.add(r_ten_big8);
+var r_ten_big9 = new THREE.Mesh(ten_big_geo,normalMaterial);
+r_ten_big9.setMatrix(r_ten_big9_pos_abs);
+scene.add(r_ten_big9);
+var r_ten_small1 = new THREE.Mesh(ten_small_geo,normalMaterial);
+r_ten_small1.setMatrix(r_ten_samll1_pos_abs); 
+scene.add(r_ten_small1);
+var r_ten_small2 = new THREE.Mesh(ten_small_geo,normalMaterial);
+r_ten_small2.setMatrix(r_ten_samll2_pos_abs);
+scene.add(r_ten_small2);
 
 // APPLY DIFFERENT JUMP CUTS/ANIMATIONS TO DIFFERNET KEYS
 // Note: The start of "U" animation has been done for you, you must implement the hiearchy and jumpcut.
@@ -537,6 +582,14 @@ function updateBody() {
       l_ten_big6.setMatrix(l_ten_big6_rot);
       var l_ten_big7_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,l_ten_big7_pos);
       l_ten_big7.setMatrix(l_ten_big7_rot);
+      var l_ten_big8_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,l_ten_big8_pos);
+      l_ten_big8.setMatrix(l_ten_big8_rot);
+      var l_ten_big9_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,l_ten_big9_pos);
+      l_ten_big9.setMatrix(l_ten_big9_rot);
+      var l_ten_small1_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,l_ten_samll1_pos);
+      l_ten_small1.setMatrix(l_ten_small1_rot);
+      var l_ten_small2_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,l_ten_samll2_pos);
+      l_ten_small2.setMatrix(l_ten_small2_rot);
 
       var r_ten_big1_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,r_ten_big1_pos);
       r_ten_big1.setMatrix(r_ten_big1_rot);
@@ -552,6 +605,14 @@ function updateBody() {
       r_ten_big6.setMatrix(r_ten_big6_rot);
       var r_ten_big7_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,r_ten_big7_pos);
       r_ten_big7.setMatrix(r_ten_big7_rot);
+      var r_ten_big8_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,r_ten_big8_pos);
+      r_ten_big8.setMatrix(r_ten_big8_rot);
+      var r_ten_big9_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,r_ten_big9_pos);
+      r_ten_big9.setMatrix(r_ten_big9_rot);
+      var r_ten_small1_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,r_ten_samll1_pos);
+      r_ten_small1.setMatrix(r_ten_small1_rot);
+      var r_ten_small2_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,r_ten_samll2_pos);
+      r_ten_small2.setMatrix(r_ten_small2_rot);
 
       break;
 
@@ -657,6 +718,52 @@ function updateBody() {
 
       var nose_rot = new THREE.Matrix4().multiplyMatrices(head_rot,nose_pos);
       nose.setMatrix(nose_rot);
+
+      var l_ten_big1_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,l_ten_big1_pos);
+      l_ten_big1.setMatrix(l_ten_big1_rot);
+      var l_ten_big2_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,l_ten_big2_pos);
+      l_ten_big2.setMatrix(l_ten_big2_rot);
+      var l_ten_big3_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,l_ten_big3_pos);
+      l_ten_big3.setMatrix(l_ten_big3_rot);
+      var l_ten_big4_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,l_ten_big4_pos);
+      l_ten_big4.setMatrix(l_ten_big4_rot);
+      var l_ten_big5_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,l_ten_big5_pos);
+      l_ten_big5.setMatrix(l_ten_big5_rot);
+      var l_ten_big6_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,l_ten_big6_pos);
+      l_ten_big6.setMatrix(l_ten_big6_rot);
+      var l_ten_big7_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,l_ten_big7_pos);
+      l_ten_big7.setMatrix(l_ten_big7_rot);
+      var l_ten_big8_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,l_ten_big8_pos);
+      l_ten_big8.setMatrix(l_ten_big8_rot);
+      var l_ten_big9_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,l_ten_big9_pos);
+      l_ten_big9.setMatrix(l_ten_big9_rot);
+      var l_ten_small1_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,l_ten_samll1_pos);
+      l_ten_small1.setMatrix(l_ten_small1_rot);
+      var l_ten_small2_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,l_ten_samll2_pos);
+      l_ten_small2.setMatrix(l_ten_small2_rot);
+
+      var r_ten_big1_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,r_ten_big1_pos);
+      r_ten_big1.setMatrix(r_ten_big1_rot);
+      var r_ten_big2_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,r_ten_big2_pos);
+      r_ten_big2.setMatrix(r_ten_big2_rot);
+      var r_ten_big3_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,r_ten_big3_pos);
+      r_ten_big3.setMatrix(r_ten_big3_rot);
+      var r_ten_big4_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,r_ten_big4_pos);
+      r_ten_big4.setMatrix(r_ten_big4_rot);
+      var r_ten_big5_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,r_ten_big5_pos);
+      r_ten_big5.setMatrix(r_ten_big5_rot);
+      var r_ten_big6_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,r_ten_big6_pos);
+      r_ten_big6.setMatrix(r_ten_big6_rot);
+      var r_ten_big7_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,r_ten_big7_pos);
+      r_ten_big7.setMatrix(r_ten_big7_rot);
+      var r_ten_big8_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,r_ten_big8_pos);
+      r_ten_big8.setMatrix(r_ten_big8_rot);
+      var r_ten_big9_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,r_ten_big9_pos);
+      r_ten_big9.setMatrix(r_ten_big9_rot);
+      var r_ten_small1_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,r_ten_samll1_pos);
+      r_ten_small1.setMatrix(r_ten_small1_rot);
+      var r_ten_small2_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,r_ten_samll2_pos);
+      r_ten_small2.setMatrix(r_ten_small2_rot);
       break;
 
 
