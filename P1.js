@@ -105,6 +105,10 @@ var claw_scale = new THREE.Matrix4().set(0.3,0,0,0, 0,0.3,0,0, 0,0,2,0, 0,0,0,1)
 var claw_geo = makeCube();
 claw_geo.applyMatrix(claw_scale);
 
+var ten_big_scale = new THREE.Matrix4().set(0.15,0,0,0, 0,0.15,0,0, 0,0,4,0, 0,0,0,1);
+var ten_big_geo = makeCube();
+ten_big_geo.applyMatrix(ten_big_scale);
+
 // MATRICES
 // var torsoMatrix = new THREE.Matrix4().set(1,0,0,0, 0,1,0,2.5, 0,0,1,0, 0,0,0,1);
 var torsoMatrix = new THREE.Matrix4().set(1,0,0,0, 0,1,0,5, 0,0,1,0, 0,0,0,1);
@@ -134,6 +138,36 @@ var head_pos_abs = new THREE.Matrix4().multiplyMatrices(torsoMatrix,head_pos);
 
 var nose_pos = new THREE.Matrix4().set(1,0,0,0, 0,1,0,0, 0,0,1,2, 0,0,0,1);
 var nose_pos_abs = new THREE.Matrix4().multiplyMatrices(head_pos_abs,nose_pos); 
+
+var l_ten_big1_pos = new THREE.Matrix4().set(1,0,0,0.9, 0,1,0,0, 0,0,1,2, 0,0,0,1);
+var l_ten_big1_pos_abs = new THREE.Matrix4().multiplyMatrices(nose_pos_abs,l_ten_big1_pos);
+var l_ten_big2_pos = new THREE.Matrix4().set(1,0,0,0.9, 0,1,0,0.3, 0,0,1,2, 0,0,0,1);
+var l_ten_big2_pos_abs = new THREE.Matrix4().multiplyMatrices(nose_pos_abs,l_ten_big2_pos);
+var l_ten_big3_pos = new THREE.Matrix4().set(1,0,0,0.9, 0,1,0,0.6, 0,0,1,2, 0,0,0,1);
+var l_ten_big3_pos_abs = new THREE.Matrix4().multiplyMatrices(nose_pos_abs,l_ten_big3_pos);
+var l_ten_big4_pos = new THREE.Matrix4().set(1,0,0,0.9, 0,1,0,0.9, 0,0,1,2, 0,0,0,1);
+var l_ten_big4_pos_abs = new THREE.Matrix4().multiplyMatrices(nose_pos_abs,l_ten_big4_pos);
+var l_ten_big5_pos = new THREE.Matrix4().set(1,0,0,0.9, 0,1,0,-0.3, 0,0,1,2, 0,0,0,1);
+var l_ten_big5_pos_abs = new THREE.Matrix4().multiplyMatrices(nose_pos_abs,l_ten_big5_pos);
+var l_ten_big6_pos = new THREE.Matrix4().set(1,0,0,0.9, 0,1,0,-0.6, 0,0,1,2, 0,0,0,1);
+var l_ten_big6_pos_abs = new THREE.Matrix4().multiplyMatrices(nose_pos_abs,l_ten_big6_pos);
+var l_ten_big7_pos = new THREE.Matrix4().set(1,0,0,0.9, 0,1,0,-0.9, 0,0,1,2, 0,0,0,1);
+var l_ten_big7_pos_abs = new THREE.Matrix4().multiplyMatrices(nose_pos_abs,l_ten_big7_pos);
+
+var r_ten_big1_pos = new THREE.Matrix4().set(1,0,0,-0.9, 0,1,0,0, 0,0,1,2, 0,0,0,1);
+var r_ten_big1_pos_abs = new THREE.Matrix4().multiplyMatrices(nose_pos_abs,r_ten_big1_pos);
+var r_ten_big2_pos = new THREE.Matrix4().set(1,0,0,-0.9, 0,1,0,0.3, 0,0,1,2, 0,0,0,1);
+var r_ten_big2_pos_abs = new THREE.Matrix4().multiplyMatrices(nose_pos_abs,r_ten_big2_pos);
+var r_ten_big3_pos = new THREE.Matrix4().set(1,0,0,-0.9, 0,1,0,0.6, 0,0,1,2, 0,0,0,1);
+var r_ten_big3_pos_abs = new THREE.Matrix4().multiplyMatrices(nose_pos_abs,r_ten_big3_pos);
+var r_ten_big4_pos = new THREE.Matrix4().set(1,0,0,-0.9, 0,1,0,0.9, 0,0,1,2, 0,0,0,1);
+var r_ten_big4_pos_abs = new THREE.Matrix4().multiplyMatrices(nose_pos_abs,r_ten_big4_pos);
+var r_ten_big5_pos = new THREE.Matrix4().set(1,0,0,-0.9, 0,1,0,-0.3, 0,0,1,2, 0,0,0,1);
+var r_ten_big5_pos_abs = new THREE.Matrix4().multiplyMatrices(nose_pos_abs,r_ten_big5_pos);
+var r_ten_big6_pos = new THREE.Matrix4().set(1,0,0,-0.9, 0,1,0,-0.6, 0,0,1,2, 0,0,0,1);
+var r_ten_big6_pos_abs = new THREE.Matrix4().multiplyMatrices(nose_pos_abs,r_ten_big6_pos);
+var r_ten_big7_pos = new THREE.Matrix4().set(1,0,0,-0.9, 0,1,0,-0.9, 0,0,1,2, 0,0,0,1);
+var r_ten_big7_pos_abs = new THREE.Matrix4().multiplyMatrices(nose_pos_abs,r_ten_big7_pos);
 
 var l_front_paw_pos = new THREE.Matrix4().set(1,0,0,0, 0,1,0,-2.1, 0,0,1,1, 0,0,0,1);
 var l_front_paw_pos_abs = new THREE.Matrix4().multiplyMatrices(l_hand_pos_abs,l_front_paw_pos);
@@ -309,6 +343,50 @@ var nose = new THREE.Mesh(nose_geo,normalMaterial);
 nose.setMatrix(nose_pos_abs);
 scene.add(nose);
 
+var l_ten_big1 = new THREE.Mesh(ten_big_geo,normalMaterial);
+l_ten_big1.setMatrix(l_ten_big1_pos_abs);
+scene.add(l_ten_big1);
+var l_ten_big2 = new THREE.Mesh(ten_big_geo,normalMaterial);
+l_ten_big2.setMatrix(l_ten_big2_pos_abs);
+scene.add(l_ten_big2);
+var l_ten_big3 = new THREE.Mesh(ten_big_geo,normalMaterial);
+l_ten_big3.setMatrix(l_ten_big3_pos_abs);
+scene.add(l_ten_big3);
+var l_ten_big4 = new THREE.Mesh(ten_big_geo,normalMaterial);
+l_ten_big4.setMatrix(l_ten_big4_pos_abs);
+scene.add(l_ten_big4);
+var l_ten_big5 = new THREE.Mesh(ten_big_geo,normalMaterial);
+l_ten_big5.setMatrix(l_ten_big5_pos_abs);
+scene.add(l_ten_big5);
+var l_ten_big6 = new THREE.Mesh(ten_big_geo,normalMaterial);
+l_ten_big6.setMatrix(l_ten_big6_pos_abs);
+scene.add(l_ten_big6);
+var l_ten_big7 = new THREE.Mesh(ten_big_geo,normalMaterial);
+l_ten_big7.setMatrix(l_ten_big7_pos_abs);
+scene.add(l_ten_big7);
+
+var r_ten_big1 = new THREE.Mesh(ten_big_geo,normalMaterial);
+r_ten_big1.setMatrix(r_ten_big1_pos_abs);
+scene.add(r_ten_big1);
+var r_ten_big2 = new THREE.Mesh(ten_big_geo,normalMaterial);
+r_ten_big2.setMatrix(r_ten_big2_pos_abs);
+scene.add(r_ten_big2);
+var r_ten_big3 = new THREE.Mesh(ten_big_geo,normalMaterial);
+r_ten_big3.setMatrix(r_ten_big3_pos_abs);
+scene.add(r_ten_big3);
+var r_ten_big4 = new THREE.Mesh(ten_big_geo,normalMaterial);
+r_ten_big4.setMatrix(r_ten_big4_pos_abs);
+scene.add(r_ten_big4);
+var r_ten_big5 = new THREE.Mesh(ten_big_geo,normalMaterial);
+r_ten_big5.setMatrix(r_ten_big5_pos_abs);
+scene.add(r_ten_big5);
+var r_ten_big6 = new THREE.Mesh(ten_big_geo,normalMaterial);
+r_ten_big6.setMatrix(r_ten_big6_pos_abs);
+scene.add(r_ten_big6);
+var r_ten_big7 = new THREE.Mesh(ten_big_geo,normalMaterial);
+r_ten_big7.setMatrix(r_ten_big7_pos_abs);
+scene.add(r_ten_big7);
+
 // APPLY DIFFERENT JUMP CUTS/ANIMATIONS TO DIFFERNET KEYS
 // Note: The start of "U" animation has been done for you, you must implement the hiearchy and jumpcut.
 // Hint: There are other ways to manipulate and grab clock values!!
@@ -444,6 +522,37 @@ function updateBody() {
 
       var nose_rot = new THREE.Matrix4().multiplyMatrices(head_rot,nose_pos);
       nose.setMatrix(nose_rot);
+
+      var l_ten_big1_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,l_ten_big1_pos);
+      l_ten_big1.setMatrix(l_ten_big1_rot);
+      var l_ten_big2_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,l_ten_big2_pos);
+      l_ten_big2.setMatrix(l_ten_big2_rot);
+      var l_ten_big3_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,l_ten_big3_pos);
+      l_ten_big3.setMatrix(l_ten_big3_rot);
+      var l_ten_big4_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,l_ten_big4_pos);
+      l_ten_big4.setMatrix(l_ten_big4_rot);
+      var l_ten_big5_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,l_ten_big5_pos);
+      l_ten_big5.setMatrix(l_ten_big5_rot);
+      var l_ten_big6_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,l_ten_big6_pos);
+      l_ten_big6.setMatrix(l_ten_big6_rot);
+      var l_ten_big7_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,l_ten_big7_pos);
+      l_ten_big7.setMatrix(l_ten_big7_rot);
+
+      var r_ten_big1_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,r_ten_big1_pos);
+      r_ten_big1.setMatrix(r_ten_big1_rot);
+      var r_ten_big2_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,r_ten_big2_pos);
+      r_ten_big2.setMatrix(r_ten_big2_rot);
+      var r_ten_big3_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,r_ten_big3_pos);
+      r_ten_big3.setMatrix(r_ten_big3_rot);
+      var r_ten_big4_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,r_ten_big4_pos);
+      r_ten_big4.setMatrix(r_ten_big4_rot);
+      var r_ten_big5_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,r_ten_big5_pos);
+      r_ten_big5.setMatrix(r_ten_big5_rot);
+      var r_ten_big6_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,r_ten_big6_pos);
+      r_ten_big6.setMatrix(r_ten_big6_rot);
+      var r_ten_big7_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,r_ten_big7_pos);
+      r_ten_big7.setMatrix(r_ten_big7_rot);
+
       break;
 
       case(key == "D" && animate):
@@ -464,8 +573,8 @@ function updateBody() {
 
 
       var rotateZ = new THREE.Matrix4().set(1,        0,         0,        0, 
-                                            0, Math.cos(p),-Math.sin(p), 0, 
-                                            0, Math.sin(p), Math.cos(p), 0,
+                                            0, Math.cos(p),-Math.sin(p),   0, 
+                                            0, Math.sin(p), Math.cos(p),   0,
                                             0,        0,         0,        1);
 
       var torsoRotMatrix = new THREE.Matrix4().multiplyMatrices(torsoMatrix,rotateZ);
@@ -549,6 +658,7 @@ function updateBody() {
       var nose_rot = new THREE.Matrix4().multiplyMatrices(head_rot,nose_pos);
       nose.setMatrix(nose_rot);
       break;
+
 
 
 
