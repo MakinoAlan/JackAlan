@@ -85,13 +85,17 @@ var limb_scale = new THREE.Matrix4().set(2,0,0,0, 0,5,0,0, 0,0,1,0, 0,0,0,1);
 var l_hand_geo = makeCube();
 l_hand_geo.applyMatrix(limb_scale);  
 
-var tail_scale = new THREE.Matrix4().set(1,0,0,0, 0,1,0,0, 0,0,8,0, 0,0,0,1);
+var tail_scale = new THREE.Matrix4().set(0.5,0,0,0, 0,0.5,0,0, 0,0,8,0, 0,0,0,1);
 var tail_geo = makeCube();
 tail_geo.applyMatrix(tail_scale); 
 
 var head_scale = new THREE.Matrix4().set(3,0,0,0, 0,3,0,0, 0,0,6,0, 0,0,0,1);
 var head_geo = makeCube();
 head_geo.applyMatrix(head_scale);
+
+var nose_scale = new THREE.Matrix4().set(2,0,0,0, 0,2,0,0, 0,0,4,0, 0,0,0,1);
+var nose_geo = makeCube();
+nose_geo.applyMatrix(nose_scale);
 
 var paw_scale = new THREE.Matrix4().set(2,0,0,0, 0,0.8,0,0, 0,0,2,0, 0,0,0,1);
 var paw_geo = makeCube();
@@ -103,7 +107,7 @@ claw_geo.applyMatrix(claw_scale);
 
 // MATRICES
 // var torsoMatrix = new THREE.Matrix4().set(1,0,0,0, 0,1,0,2.5, 0,0,1,0, 0,0,0,1);
-var torsoMatrix = new THREE.Matrix4().set(1,0,0,0, 0,1,0,2.5, 0,0,1,0, 0,0,0,1);
+var torsoMatrix = new THREE.Matrix4().set(1,0,0,0, 0,1,0,5, 0,0,1,0, 0,0,0,1);
 
 // TO-DO: INITIALIZE THE REST OF YOUR MATRICES 
 // Note: Use of parent attribute is not allowed.
@@ -127,6 +131,9 @@ var tail_pos_abs = new THREE.Matrix4().multiplyMatrices(torsoMatrix,tail_pos);
 
 var head_pos = new THREE.Matrix4().set(1,0,0,0, 0,1,0,0, 0,0,1,4, 0,0,0,1);
 var head_pos_abs = new THREE.Matrix4().multiplyMatrices(torsoMatrix,head_pos); 
+
+var nose_pos = new THREE.Matrix4().set(1,0,0,0, 0,1,0,0, 0,0,1,2, 0,0,0,1);
+var nose_pos_abs = new THREE.Matrix4().multiplyMatrices(head_pos_abs,nose_pos); 
 
 var l_front_paw_pos = new THREE.Matrix4().set(1,0,0,0, 0,1,0,-2.1, 0,0,1,1, 0,0,0,1);
 var l_front_paw_pos_abs = new THREE.Matrix4().multiplyMatrices(l_hand_pos_abs,l_front_paw_pos);
@@ -298,6 +305,10 @@ var head = new THREE.Mesh(head_geo,normalMaterial);
 head.setMatrix(head_pos_abs);
 scene.add(head);
 
+var nose = new THREE.Mesh(nose_geo,normalMaterial);
+nose.setMatrix(nose_pos_abs);
+scene.add(nose);
+
 // APPLY DIFFERENT JUMP CUTS/ANIMATIONS TO DIFFERNET KEYS
 // Note: The start of "U" animation has been done for you, you must implement the hiearchy and jumpcut.
 // Hint: There are other ways to manipulate and grab clock values!!
@@ -430,6 +441,9 @@ function updateBody() {
 
       var head_rot = new THREE.Matrix4().multiplyMatrices(torsoRotMatrix,head_pos);
       head.setMatrix(head_rot);
+
+      var nose_rot = new THREE.Matrix4().multiplyMatrices(head_rot,nose_pos);
+      nose.setMatrix(nose_rot);
       break;
 
 
