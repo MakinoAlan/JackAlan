@@ -106,11 +106,11 @@ var claw_scale = new THREE.Matrix4().set(0.3,0,0,0, 0,0.3,0,0, 0,0,2,0, 0,0,0,1)
 var claw_geo = makeCube();
 claw_geo.applyMatrix(claw_scale);
 
-var ten_big_scale = new THREE.Matrix4().set(0.15,0,0,0, 0,0.15,0,0, 0,0,2,0, 0,0,0,1);
+var ten_big_scale = new THREE.Matrix4().set(0.15,0,0,0, 0,0.15,0,0, 0,0,2.5,0, 0,0,0,1);
 var ten_big_geo = makeCube();
 ten_big_geo.applyMatrix(ten_big_scale);
 
-var ten_small_scale = new THREE.Matrix4().set(0.2,0,0,0, 0,0.2,0,0, 0,0,2.5,0, 0,0,0,1);
+var ten_small_scale = new THREE.Matrix4().set(0.2,0,0,0, 0,0.2,0,0, 0,0,1.5,0, 0,0,0,1);
 var ten_small_geo = makeCube();
 ten_small_geo.applyMatrix(ten_small_scale);
 
@@ -1209,6 +1209,66 @@ function updateBody() {
 
       break;
 
+      case(key == "S" && animate):
+      var time = clock.getElapsedTime(); // t seconds passed since the clock started.
+
+      if (time > time_end){
+        p = p1;
+        animate = false;
+        break;
+      }
+
+      if (smooth){
+        p = (p1 - p0)*((time-time_start)/time_length) + p0; // current frame 
+      }
+      else{p = p1;
+      }
+      
+      p=p/3;
+
+      var rotateZ = new THREE.Matrix4().set(1,        0,         0,        0, 
+                                            0, Math.cos(-p),-Math.sin(-p), 0, 
+                                            0, Math.sin(-p), Math.cos(-p), 0,
+                                            0,        0,         0,        1);
+
+      var torsoRotMatrix = new THREE.Matrix4().multiplyMatrices(torsoMatrix,rotateZ);
+      //torso.setMatrix(torsoRotMatrix);
+      var l_hand_rot = new THREE.Matrix4().multiplyMatrices(torsoRotMatrix,l_hand_pos);
+      l_hand.setMatrix(l_hand_rot); 
+
+      var l_front_paw_rot = new THREE.Matrix4().multiplyMatrices(l_hand_rot,l_front_paw_pos);
+      l_front_paw.setMatrix(l_front_paw_rot);
+
+      var l_front_paw_claw1_rot = new THREE.Matrix4().multiplyMatrices(l_front_paw_rot,l_front_paw_claw_pos1);
+      l_front_paw_claw1.setMatrix(l_front_paw_claw1_rot);
+      var l_front_paw_claw2_rot = new THREE.Matrix4().multiplyMatrices(l_front_paw_rot,l_front_paw_claw_pos2);
+      l_front_paw_claw2.setMatrix(l_front_paw_claw2_rot);
+      var l_front_paw_claw3_rot = new THREE.Matrix4().multiplyMatrices(l_front_paw_rot,l_front_paw_claw_pos3);
+      l_front_paw_claw3.setMatrix(l_front_paw_claw3_rot);
+      var l_front_paw_claw4_rot = new THREE.Matrix4().multiplyMatrices(l_front_paw_rot,l_front_paw_claw_pos4);
+      l_front_paw_claw4.setMatrix(l_front_paw_claw4_rot);
+      var l_front_paw_claw5_rot = new THREE.Matrix4().multiplyMatrices(l_front_paw_rot,l_front_paw_claw_pos5);
+      l_front_paw_claw5.setMatrix(l_front_paw_claw5_rot);
+
+      
+      var r_foot_rot = new THREE.Matrix4().multiplyMatrices(torsoRotMatrix,r_foot_pos);
+      r_foot.setMatrix(r_foot_rot); 
+
+      var r_rare_paw_rot = new THREE.Matrix4().multiplyMatrices(r_foot_rot,r_rare_paw_pos);
+      r_rare_paw.setMatrix(r_rare_paw_rot);
+
+      var r_rare_paw_claw1_rot = new THREE.Matrix4().multiplyMatrices(r_rare_paw_rot,r_rare_paw_claw_pos1);
+      r_rare_paw_claw1.setMatrix(r_rare_paw_claw1_rot);
+      var r_rare_paw_claw2_rot = new THREE.Matrix4().multiplyMatrices(r_rare_paw_rot,r_rare_paw_claw_pos2);
+      r_rare_paw_claw2.setMatrix(r_rare_paw_claw2_rot);
+      var r_rare_paw_claw3_rot = new THREE.Matrix4().multiplyMatrices(r_rare_paw_rot,r_rare_paw_claw_pos3);
+      r_rare_paw_claw3.setMatrix(r_rare_paw_claw3_rot);
+      var r_rare_paw_claw4_rot = new THREE.Matrix4().multiplyMatrices(r_rare_paw_rot,r_rare_paw_claw_pos4);
+      r_rare_paw_claw4.setMatrix(r_rare_paw_claw4_rot);
+      var r_rare_paw_claw5_rot = new THREE.Matrix4().multiplyMatrices(r_rare_paw_rot,r_rare_paw_claw_pos5);
+      r_rare_paw_claw5.setMatrix(r_rare_paw_claw5_rot);
+
+      break;
       // TO-DO: IMPLEMENT JUMPCUT/ANIMATION FOR EACH KEY!
       // Note: Remember spacebar sets jumpcut/animate!
 
@@ -1252,6 +1312,8 @@ keyboard.domElement.addEventListener('keydown',function(event){
     (key == "N")? init_animation(p1,p0,time_length) : (init_animation(0,Math.PI/4,1), key = "N")}
   else if(keyboard.eventMatches(event,"D")){ 
     (key == "D")? init_animation(p1,p0,time_length) : (init_animation(0,Math.PI/4,1), key = "D")}
+  else if(keyboard.eventMatches(event,"S")){ 
+    (key == "S")? init_animation(p1,p0,time_length) : (init_animation(0,Math.PI/4,1), key = "S")}
 
   else if(keyboard.eventMatches(event," ")){
      smooth = !smooth;
