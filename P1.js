@@ -59,6 +59,7 @@ var grid = new THREE.Line(gridGeometry,gridMaterial,THREE.LinePieces);
 
 // MATERIALS
 // Note: Feel free to be creative with this! 
+// var normalMaterial = new THREE.MeshNormalMaterial();
 var normalMaterial = new THREE.MeshNormalMaterial();
 
 // function drawCube()
@@ -1159,6 +1160,55 @@ function updateBody() {
       r_ten_big9.setMatrix(ten_rot_r_big9);
       break;
 
+      case(key == "D" && animate):
+      var time = clock.getElapsedTime(); // t seconds passed since the clock started.
+
+      if (time > time_end){
+        p = p1;
+        animate = false;
+        break;
+      }
+
+      if (smooth){
+        p = (p1 - p0)*((time-time_start)/time_length) + p0; // current frame 
+      }
+      else{p = p1;
+      }
+      
+
+      var rotateZ = new THREE.Matrix4().set(1,        0,         0,        0, 
+                                            0, Math.cos(p/3),-Math.sin(p/3),   0, 
+                                            0, Math.sin(p/3), Math.cos(p/3),   0,
+                                            0,        0,         0,        1);
+      var rotateZZ = new THREE.Matrix4().set(1,        0,         0,        0, 
+                                            0, Math.cos(p),-Math.sin(p),   0, 
+                                            0, Math.sin(p), Math.cos(p),   0,
+                                            0,        0,         0,        1);
+
+      //var torsoRotMatrix = new THREE.Matrix4().multiplyMatrices(torsoMatrix,rotateZ);
+      //torso.setMatrix(torsoRotMatrix);
+      var rotRPaw = new THREE.Matrix4().multiplyMatrices(r_front_paw_pos_abs,rotateZ);
+      var rotRPaw1 = new THREE.Matrix4().multiplyMatrices(r_front_paw_pos_abs,rotateZZ);
+      var rotLPaw = new THREE.Matrix4().multiplyMatrices(l_front_paw_pos_abs,rotateZ);
+      var rotLPaw1 = new THREE.Matrix4().multiplyMatrices(l_front_paw_pos_abs,rotateZZ);
+      l_front_paw.setMatrix(rotLPaw);
+      r_front_paw.setMatrix(rotRPaw);
+     
+      l_front_paw_claw1.setMatrix(new THREE.Matrix4().multiplyMatrices(rotLPaw1,l_front_paw_claw_pos1));
+      l_front_paw_claw2.setMatrix(new THREE.Matrix4().multiplyMatrices(rotLPaw1,l_front_paw_claw_pos2));
+      l_front_paw_claw3.setMatrix(new THREE.Matrix4().multiplyMatrices(rotLPaw1,l_front_paw_claw_pos3));
+      l_front_paw_claw4.setMatrix(new THREE.Matrix4().multiplyMatrices(rotLPaw1,l_front_paw_claw_pos4));
+      l_front_paw_claw5.setMatrix(new THREE.Matrix4().multiplyMatrices(rotLPaw1,l_front_paw_claw_pos5));
+      
+      r_front_paw_claw5.setMatrix(new THREE.Matrix4().multiplyMatrices(rotRPaw1,r_front_paw_claw_pos5));
+      r_front_paw_claw4.setMatrix(new THREE.Matrix4().multiplyMatrices(rotRPaw1,r_front_paw_claw_pos4));
+      r_front_paw_claw3.setMatrix(new THREE.Matrix4().multiplyMatrices(rotRPaw1,r_front_paw_claw_pos3));
+      r_front_paw_claw2.setMatrix(new THREE.Matrix4().multiplyMatrices(rotRPaw1,r_front_paw_claw_pos2));
+      r_front_paw_claw1.setMatrix(new THREE.Matrix4().multiplyMatrices(rotRPaw1,r_front_paw_claw_pos1));
+
+
+      break;
+
       // TO-DO: IMPLEMENT JUMPCUT/ANIMATION FOR EACH KEY!
       // Note: Remember spacebar sets jumpcut/animate!
 
@@ -1200,6 +1250,8 @@ keyboard.domElement.addEventListener('keydown',function(event){
     (key == "V")? init_animation(p1,p0,time_length) : (init_animation(0,Math.PI/4,1), key = "V")}
   else if(keyboard.eventMatches(event,"N")){ 
     (key == "N")? init_animation(p1,p0,time_length) : (init_animation(0,Math.PI/4,1), key = "N")}
+  else if(keyboard.eventMatches(event,"D")){ 
+    (key == "D")? init_animation(p1,p0,time_length) : (init_animation(0,Math.PI/4,1), key = "D")}
 
   else if(keyboard.eventMatches(event," ")){
      smooth = !smooth;
