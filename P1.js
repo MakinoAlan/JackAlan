@@ -854,7 +854,7 @@ function updateBody() {
       break;
 
       
-           case(key == "H" && animate):
+      case(key == "H" && animate):
       var time = clock.getElapsedTime(); // t seconds passed since the clock started.
 
       if (time > time_end){
@@ -941,6 +941,81 @@ function updateBody() {
 
       break;
 
+      case(key == "T" && animate):
+      var time = clock.getElapsedTime(); // t seconds passed since the clock started.
+
+      if (time > time_end){
+        p = p1;
+        animate = false;
+        break;
+      }
+
+      if (smooth){
+        p = (p1 - p0)*((time-time_start)/time_length) + p0; // current frame 
+      }
+      else{p = p1;
+      }
+      
+      p = p/3.5;
+
+      var rotateZ = new THREE.Matrix4().set(1,        0,         0,        0, 
+                                            0, Math.cos(p),-Math.sin(p),   0, 
+                                            0, Math.sin(p), Math.cos(p),   0,
+                                            0,        0,         0,        1);
+      var rotateY = new THREE.Matrix4().set(Math.cos(p),0, Math.sin(p),  0, 
+                                            0, 1,0,   0, 
+                                            -Math.sin(p),0, Math.cos(p),   0,
+                                            0,        0,         0,        1);
+
+
+      var torsoRotMatrix = new THREE.Matrix4().multiplyMatrices(torsoMatrix,rotateY);
+      //torso.setMatrix(torsoRotMatrix);
+      var pivot = new THREE.Matrix4().set(1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1);
+      pivot.getInverse(pivot);
+      
+      var tailRotMatrix = new THREE.Matrix4().multiplyMatrices(torsoRotMatrix,tail_pos);
+      tailRotMatrix.multiply(pivot);
+      tail.setMatrix(tailRotMatrix);
+
+      break;
+
+      case(key == "V" && animate):
+      var time = clock.getElapsedTime(); // t seconds passed since the clock started.
+
+      if (time > time_end){
+        p = p1;
+        animate = false;
+        break;
+      }
+
+      if (smooth){
+        p = (p1 - p0)*((time-time_start)/time_length) + p0; // current frame 
+      }
+      else{p = p1;
+      }
+      
+      p = 0-p/3.5;
+
+      var rotateZ = new THREE.Matrix4().set(1,        0,         0,        0, 
+                                            0, Math.cos(p),-Math.sin(p),   0, 
+                                            0, Math.sin(p), Math.cos(p),   0,
+                                            0,        0,         0,        1);
+      var rotateY = new THREE.Matrix4().set(Math.cos(p),0, Math.sin(p),  0, 
+                                            0, 1,0,   0, 
+                                            -Math.sin(p),0, Math.cos(p),   0,
+                                            0,        0,         0,        1);
+
+
+      var torsoRotMatrix = new THREE.Matrix4().multiplyMatrices(torsoMatrix,rotateY);
+      //torso.setMatrix(torsoRotMatrix);
+      var pivot = new THREE.Matrix4().set(1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1);
+      pivot.getInverse(pivot);
+      
+      var tailRotMatrix = new THREE.Matrix4().multiplyMatrices(torsoRotMatrix,tail_pos);
+      tailRotMatrix.multiply(pivot);
+      tail.setMatrix(tailRotMatrix);
+
+      break;
 
       // TO-DO: IMPLEMENT JUMPCUT/ANIMATION FOR EACH KEY!
       // Note: Remember spacebar sets jumpcut/animate!
@@ -977,6 +1052,10 @@ keyboard.domElement.addEventListener('keydown',function(event){
     (key == "H")? init_animation(p1,p0,time_length) : (init_animation(0,Math.PI/4,1), key = "H")}
   else if(keyboard.eventMatches(event,"G")){ 
     (key == "G")? init_animation(p1,p0,time_length) : (init_animation(0,Math.PI/4,1), key = "G")}
+  else if(keyboard.eventMatches(event,"T")){ 
+    (key == "T")? init_animation(p1,p0,time_length) : (init_animation(0,Math.PI/4,1), key = "T")}
+  else if(keyboard.eventMatches(event,"V")){ 
+    (key == "V")? init_animation(p1,p0,time_length) : (init_animation(0,Math.PI/4,1), key = "V")}
 
   else if(keyboard.eventMatches(event," ")){
      smooth = !smooth;
