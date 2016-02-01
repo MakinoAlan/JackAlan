@@ -89,7 +89,7 @@ var tail_scale = new THREE.Matrix4().set(0.5,0,0,0, 0,0.5,0,0, 0,0,8,0, 0,0,0,1)
 var tail_geo = makeCube();
 tail_geo.applyMatrix(tail_scale); 
 
-var head_scale = new THREE.Matrix4().set(3,0,0,0, 0,3,0,0, 0,0,6,0, 0,0,0,1);
+var head_scale = new THREE.Matrix4().set(3,0,0,0, 0,3,0,0, 0,0,5,0, 0,0,0,1);
 var head_geo = makeCube();
 head_geo.applyMatrix(head_scale);
 
@@ -616,7 +616,7 @@ function updateBody() {
 
       break;
 
-      case(key == "D" && animate):
+      case(key == "E" && animate):
       var time = clock.getElapsedTime(); // t seconds passed since the clock started.
 
       if (time > time_end){
@@ -766,7 +766,180 @@ function updateBody() {
       r_ten_small2.setMatrix(r_ten_small2_rot);
       break;
 
+      case(key == "G" && animate):
+      var time = clock.getElapsedTime(); // t seconds passed since the clock started.
 
+      if (time > time_end){
+        p = p1;
+        animate = false;
+        break;
+      }
+
+      if (smooth){
+        p = (p1 - p0)*((time-time_start)/time_length) + p0; // current frame 
+      }
+      else{p = p1;
+      }
+      
+      p = p/3.5;
+
+      var rotateZ = new THREE.Matrix4().set(1,        0,         0,        0, 
+                                            0, Math.cos(p),-Math.sin(p),   0, 
+                                            0, Math.sin(p), Math.cos(p),   0,
+                                            0,        0,         0,        1);
+      var rotateY = new THREE.Matrix4().set(Math.cos(p),0, Math.sin(p),  0, 
+                                            0, 1,0,   0, 
+                                            -Math.sin(p),0, Math.cos(p),   0,
+                                            0,        0,         0,        1);
+
+
+      var torsoRotMatrix = new THREE.Matrix4().multiplyMatrices(torsoMatrix,rotateY);
+      //torso.setMatrix(torsoRotMatrix);
+      var pivot = new THREE.Matrix4().set(1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1);
+      pivot.getInverse(pivot);
+      var headRotMatrix = new THREE.Matrix4().multiplyMatrices(torsoRotMatrix,head_pos);
+      headRotMatrix.multiply(pivot);
+      head.setMatrix(headRotMatrix);
+
+      var noseRotMatrix = new THREE.Matrix4().multiplyMatrices(headRotMatrix,nose_pos);
+      nose.setMatrix(noseRotMatrix);
+
+      var nose_rot = noseRotMatrix;
+
+      var l_ten_big1_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,l_ten_big1_pos);
+      l_ten_big1.setMatrix(l_ten_big1_rot);
+      var l_ten_big2_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,l_ten_big2_pos);
+      l_ten_big2.setMatrix(l_ten_big2_rot);
+      var l_ten_big3_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,l_ten_big3_pos);
+      l_ten_big3.setMatrix(l_ten_big3_rot);
+      var l_ten_big4_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,l_ten_big4_pos);
+      l_ten_big4.setMatrix(l_ten_big4_rot);
+      var l_ten_big5_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,l_ten_big5_pos);
+      l_ten_big5.setMatrix(l_ten_big5_rot);
+      var l_ten_big6_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,l_ten_big6_pos);
+      l_ten_big6.setMatrix(l_ten_big6_rot);
+      var l_ten_big7_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,l_ten_big7_pos);
+      l_ten_big7.setMatrix(l_ten_big7_rot);
+      var l_ten_big8_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,l_ten_big8_pos);
+      l_ten_big8.setMatrix(l_ten_big8_rot);
+      var l_ten_big9_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,l_ten_big9_pos);
+      l_ten_big9.setMatrix(l_ten_big9_rot);
+      var l_ten_small1_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,l_ten_samll1_pos);
+      l_ten_small1.setMatrix(l_ten_small1_rot);
+      var l_ten_small2_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,l_ten_samll2_pos);
+      l_ten_small2.setMatrix(l_ten_small2_rot);
+      var r_ten_big1_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,r_ten_big1_pos);
+      r_ten_big1.setMatrix(r_ten_big1_rot);
+      var r_ten_big2_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,r_ten_big2_pos);
+      r_ten_big2.setMatrix(r_ten_big2_rot);
+      var r_ten_big3_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,r_ten_big3_pos);
+      r_ten_big3.setMatrix(r_ten_big3_rot);
+      var r_ten_big4_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,r_ten_big4_pos);
+      r_ten_big4.setMatrix(r_ten_big4_rot);
+      var r_ten_big5_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,r_ten_big5_pos);
+      r_ten_big5.setMatrix(r_ten_big5_rot);
+      var r_ten_big6_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,r_ten_big6_pos);
+      r_ten_big6.setMatrix(r_ten_big6_rot);
+      var r_ten_big7_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,r_ten_big7_pos);
+      r_ten_big7.setMatrix(r_ten_big7_rot);
+      var r_ten_big8_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,r_ten_big8_pos);
+      r_ten_big8.setMatrix(r_ten_big8_rot);
+      var r_ten_big9_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,r_ten_big9_pos);
+      r_ten_big9.setMatrix(r_ten_big9_rot);
+      var r_ten_small1_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,r_ten_samll1_pos);
+      r_ten_small1.setMatrix(r_ten_small1_rot);
+      var r_ten_small2_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,r_ten_samll2_pos);
+      r_ten_small2.setMatrix(r_ten_small2_rot);
+
+      break;
+
+      
+           case(key == "H" && animate):
+      var time = clock.getElapsedTime(); // t seconds passed since the clock started.
+
+      if (time > time_end){
+        p = p1;
+        animate = false;
+        break;
+      }
+
+      if (smooth){
+        p = (p1 - p0)*((time-time_start)/time_length) + p0; // current frame 
+      }
+      else{p = p1;
+      }
+      
+      p = 0-p/3.5;
+
+      var rotateZ = new THREE.Matrix4().set(1,        0,         0,        0, 
+                                            0, Math.cos(p),-Math.sin(p),   0, 
+                                            0, Math.sin(p), Math.cos(p),   0,
+                                            0,        0,         0,        1);
+      var rotateY = new THREE.Matrix4().set(Math.cos(p),0, Math.sin(p),  0, 
+                                            0, 1,0,   0, 
+                                            -Math.sin(p),0, Math.cos(p),   0,
+                                            0,        0,         0,        1);
+
+
+      var torsoRotMatrix = new THREE.Matrix4().multiplyMatrices(torsoMatrix,rotateY);
+      //torso.setMatrix(torsoRotMatrix);
+      var pivot = new THREE.Matrix4().set(1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1);
+      pivot.getInverse(pivot);
+      var headRotMatrix = new THREE.Matrix4().multiplyMatrices(torsoRotMatrix,head_pos);
+      headRotMatrix.multiply(pivot);
+      head.setMatrix(headRotMatrix);
+
+      var noseRotMatrix = new THREE.Matrix4().multiplyMatrices(headRotMatrix,nose_pos);
+      nose.setMatrix(noseRotMatrix);
+
+      var nose_rot = noseRotMatrix;
+
+      var l_ten_big1_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,l_ten_big1_pos);
+      l_ten_big1.setMatrix(l_ten_big1_rot);
+      var l_ten_big2_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,l_ten_big2_pos);
+      l_ten_big2.setMatrix(l_ten_big2_rot);
+      var l_ten_big3_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,l_ten_big3_pos);
+      l_ten_big3.setMatrix(l_ten_big3_rot);
+      var l_ten_big4_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,l_ten_big4_pos);
+      l_ten_big4.setMatrix(l_ten_big4_rot);
+      var l_ten_big5_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,l_ten_big5_pos);
+      l_ten_big5.setMatrix(l_ten_big5_rot);
+      var l_ten_big6_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,l_ten_big6_pos);
+      l_ten_big6.setMatrix(l_ten_big6_rot);
+      var l_ten_big7_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,l_ten_big7_pos);
+      l_ten_big7.setMatrix(l_ten_big7_rot);
+      var l_ten_big8_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,l_ten_big8_pos);
+      l_ten_big8.setMatrix(l_ten_big8_rot);
+      var l_ten_big9_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,l_ten_big9_pos);
+      l_ten_big9.setMatrix(l_ten_big9_rot);
+      var l_ten_small1_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,l_ten_samll1_pos);
+      l_ten_small1.setMatrix(l_ten_small1_rot);
+      var l_ten_small2_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,l_ten_samll2_pos);
+      l_ten_small2.setMatrix(l_ten_small2_rot);
+      var r_ten_big1_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,r_ten_big1_pos);
+      r_ten_big1.setMatrix(r_ten_big1_rot);
+      var r_ten_big2_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,r_ten_big2_pos);
+      r_ten_big2.setMatrix(r_ten_big2_rot);
+      var r_ten_big3_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,r_ten_big3_pos);
+      r_ten_big3.setMatrix(r_ten_big3_rot);
+      var r_ten_big4_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,r_ten_big4_pos);
+      r_ten_big4.setMatrix(r_ten_big4_rot);
+      var r_ten_big5_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,r_ten_big5_pos);
+      r_ten_big5.setMatrix(r_ten_big5_rot);
+      var r_ten_big6_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,r_ten_big6_pos);
+      r_ten_big6.setMatrix(r_ten_big6_rot);
+      var r_ten_big7_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,r_ten_big7_pos);
+      r_ten_big7.setMatrix(r_ten_big7_rot);
+      var r_ten_big8_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,r_ten_big8_pos);
+      r_ten_big8.setMatrix(r_ten_big8_rot);
+      var r_ten_big9_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,r_ten_big9_pos);
+      r_ten_big9.setMatrix(r_ten_big9_rot);
+      var r_ten_small1_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,r_ten_samll1_pos);
+      r_ten_small1.setMatrix(r_ten_small1_rot);
+      var r_ten_small2_rot = new THREE.Matrix4().multiplyMatrices(nose_rot,r_ten_samll2_pos);
+      r_ten_small2.setMatrix(r_ten_small2_rot);
+
+      break;
 
 
       // TO-DO: IMPLEMENT JUMPCUT/ANIMATION FOR EACH KEY!
@@ -798,6 +971,13 @@ keyboard.domElement.addEventListener('keydown',function(event){
     (key == "U")? init_animation(p1,p0,time_length) : (init_animation(0,Math.PI/4,1), key = "U")}
   else if(keyboard.eventMatches(event,"D")){ 
     (key == "D")? init_animation(p1,p0,time_length) : (init_animation(0,Math.PI/4,1), key = "D")}
+  else if(keyboard.eventMatches(event,"E")){ 
+    (key == "E")? init_animation(p1,p0,time_length) : (init_animation(0,Math.PI/4,1), key = "E")}
+  else if(keyboard.eventMatches(event,"H")){ 
+    (key == "H")? init_animation(p1,p0,time_length) : (init_animation(0,Math.PI/4,1), key = "H")}
+  else if(keyboard.eventMatches(event,"G")){ 
+    (key == "G")? init_animation(p1,p0,time_length) : (init_animation(0,Math.PI/4,1), key = "G")}
+
   else if(keyboard.eventMatches(event," ")){
      smooth = !smooth;
   }
