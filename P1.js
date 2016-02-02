@@ -1609,8 +1609,7 @@ keyboard.domElement.addEventListener('keydown',function(event){
     (key == "D")? init_animation(p1,p0,time_length) : (init_animation(0,Math.PI/4,1), key = "D")}
   else if(keyboard.eventMatches(event,"S")){ 
   	count++;
-    ((key == "S") && (count != 1) )? init_animation(p1,-p1,time_length) : (init_animation(0,Math.PI/4,1), key = "S")}
-
+    ((key == "S") && (count != 1) )? (((key == "S") && (count == 2) )?init_animation(p1,-p1,time_length):(init_animation(p1,0,time_length),count = 0)) : (init_animation(0,Math.PI/4,1), key = "S")}
   else if(keyboard.eventMatches(event," ")){
      smooth = !smooth;
   }
