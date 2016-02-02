@@ -60,7 +60,9 @@ var grid = new THREE.Line(gridGeometry,gridMaterial,THREE.LinePieces);
 // MATERIALS
 // Note: Feel free to be creative with this! 
 // var normalMaterial = new THREE.MeshNormalMaterial();
-var normalMaterial = new THREE.MeshNormalMaterial();
+THREE.ImageUtils.crossOrigin = '';
+var texture = THREE.ImageUtils.loadTexture( 't2.jpg' );
+var normalMaterial = new THREE.MeshBasicMaterial( { map: texture } );
 
 // function drawCube()
 // Draws a unit cube centered about the origin.
@@ -433,6 +435,117 @@ var r_ten_small2 = new THREE.Mesh(ten_small_geo,normalMaterial);
 r_ten_small2.setMatrix(r_ten_small2_pos_abs);
 scene.add(r_ten_small2);
 
+function allreset() {
+torso.setMatrix(torsoMatrix)
+scene.add(torso);
+l_hand.setMatrix(l_hand_pos_abs);
+scene.add(l_hand);
+l_front_paw.setMatrix(l_front_paw_pos_abs);
+scene.add(l_front_paw);
+l_front_paw_claw1.setMatrix(l_front_paw_claw_pos1_abs);
+scene.add(l_front_paw_claw1);
+l_front_paw_claw2.setMatrix(l_front_paw_claw_pos2_abs);
+scene.add(l_front_paw_claw2);
+l_front_paw_claw3.setMatrix(l_front_paw_claw_pos3_abs);
+scene.add(l_front_paw_claw3);
+l_front_paw_claw4.setMatrix(l_front_paw_claw_pos4_abs);
+scene.add(l_front_paw_claw4);
+l_front_paw_claw5.setMatrix(l_front_paw_claw_pos5_abs);
+scene.add(l_front_paw_claw5);
+l_foot.setMatrix(l_foot_pos_abs);
+scene.add(l_foot);
+l_rare_paw.setMatrix(l_rare_paw_pos_abs);
+scene.add(l_rare_paw);
+l_rare_paw_claw1.setMatrix(l_rare_paw_claw_pos1_abs);
+scene.add(l_rare_paw_claw1);
+l_rare_paw_claw2.setMatrix(l_rare_paw_claw_pos2_abs);
+scene.add(l_rare_paw_claw2);
+l_rare_paw_claw3.setMatrix(l_rare_paw_claw_pos3_abs);
+scene.add(l_rare_paw_claw3);
+l_rare_paw_claw4.setMatrix(l_rare_paw_claw_pos4_abs);
+scene.add(l_rare_paw_claw4);
+l_rare_paw_claw5.setMatrix(l_rare_paw_claw_pos5_abs);
+scene.add(l_rare_paw_claw5);
+r_hand.setMatrix(r_hand_pos_abs);
+scene.add(r_hand);
+r_front_paw.setMatrix(r_front_paw_pos_abs);
+scene.add(r_front_paw);
+r_front_paw_claw1.setMatrix(r_front_paw_claw_pos1_abs);
+scene.add(r_front_paw_claw1);
+r_front_paw_claw2.setMatrix(r_front_paw_claw_pos2_abs);
+scene.add(r_front_paw_claw2);
+r_front_paw_claw3.setMatrix(r_front_paw_claw_pos3_abs);
+scene.add(r_front_paw_claw3);
+r_front_paw_claw4.setMatrix(r_front_paw_claw_pos4_abs);
+scene.add(r_front_paw_claw4);
+r_front_paw_claw5.setMatrix(r_front_paw_claw_pos5_abs);
+scene.add(r_front_paw_claw5);
+r_foot.setMatrix(r_foot_pos_abs);
+scene.add(r_foot);
+r_rare_paw.setMatrix(r_rare_paw_pos_abs);
+scene.add(r_rare_paw);
+r_rare_paw_claw1.setMatrix(r_rare_paw_claw_pos1_abs);
+scene.add(r_rare_paw_claw1);
+r_rare_paw_claw2.setMatrix(r_rare_paw_claw_pos2_abs);
+scene.add(r_rare_paw_claw2);
+r_rare_paw_claw3.setMatrix(r_rare_paw_claw_pos3_abs);
+scene.add(r_rare_paw_claw3);
+r_rare_paw_claw4.setMatrix(r_rare_paw_claw_pos4_abs);
+scene.add(r_rare_paw_claw4);
+r_rare_paw_claw5.setMatrix(r_rare_paw_claw_pos5_abs);
+scene.add(r_rare_paw_claw5);
+tail.setMatrix(tail_pos_abs);
+scene.add(tail);
+head.setMatrix(head_pos_abs);
+scene.add(head);
+nose.setMatrix(nose_pos_abs);
+scene.add(nose);
+l_ten_big1.setMatrix(l_ten_big1_pos_abs);
+scene.add(l_ten_big1);
+l_ten_big2.setMatrix(l_ten_big2_pos_abs);
+scene.add(l_ten_big2);
+l_ten_big3.setMatrix(l_ten_big3_pos_abs);
+scene.add(l_ten_big3);
+l_ten_big4.setMatrix(l_ten_big4_pos_abs);
+scene.add(l_ten_big4);
+l_ten_big5.setMatrix(l_ten_big5_pos_abs);
+scene.add(l_ten_big5);
+l_ten_big6.setMatrix(l_ten_big6_pos_abs);
+scene.add(l_ten_big6);
+l_ten_big7.setMatrix(l_ten_big7_pos_abs);
+scene.add(l_ten_big7);
+l_ten_big8.setMatrix(l_ten_big8_pos_abs);
+scene.add(l_ten_big8);
+l_ten_big9.setMatrix(l_ten_big9_pos_abs);
+scene.add(l_ten_big9);
+l_ten_small1.setMatrix(l_ten_small1_pos_abs); 
+scene.add(l_ten_small1);
+l_ten_small2.setMatrix(l_ten_small2_pos_abs);
+scene.add(l_ten_small2);
+r_ten_big1.setMatrix(r_ten_big1_pos_abs);
+scene.add(r_ten_big1);
+r_ten_big2.setMatrix(r_ten_big2_pos_abs);
+scene.add(r_ten_big2);
+r_ten_big3.setMatrix(r_ten_big3_pos_abs);
+scene.add(r_ten_big3);
+r_ten_big4.setMatrix(r_ten_big4_pos_abs);
+scene.add(r_ten_big4);
+r_ten_big5.setMatrix(r_ten_big5_pos_abs);
+scene.add(r_ten_big5);
+r_ten_big6.setMatrix(r_ten_big6_pos_abs);
+scene.add(r_ten_big6);
+r_ten_big7.setMatrix(r_ten_big7_pos_abs);
+scene.add(r_ten_big7);
+r_ten_big8.setMatrix(r_ten_big8_pos_abs);
+scene.add(r_ten_big8);
+r_ten_big9.setMatrix(r_ten_big9_pos_abs);
+scene.add(r_ten_big9);
+r_ten_small1.setMatrix(r_ten_small1_pos_abs); 
+scene.add(r_ten_small1);
+r_ten_small2.setMatrix(r_ten_small2_pos_abs);
+scene.add(r_ten_small2);
+}
+
 // APPLY DIFFERENT JUMP CUTS/ANIMATIONS TO DIFFERNET KEYS
 // Note: The start of "U" animation has been done for you, you must implement the hiearchy and jumpcut.
 // Hint: There are other ways to manipulate and grab clock values!!
@@ -492,7 +605,7 @@ function updateBody() {
                                             0, Math.cos(-p),-Math.sin(-p), 0, 
                                             0, Math.sin(-p), Math.cos(-p), 0,
                                             0,        0,         0,        1);
-
+      
       var torsoRotMatrix = new THREE.Matrix4().multiplyMatrices(torsoMatrix,rotateZ);
       torso.setMatrix(torsoRotMatrix);
 
@@ -773,6 +886,7 @@ function updateBody() {
       break;
 
       case(key == "G" && animate):
+      allreset();
       var time = clock.getElapsedTime(); // t seconds passed since the clock started.
 
       if (time > time_end){
@@ -892,6 +1006,8 @@ function updateBody() {
       var pivot = new THREE.Matrix4().set(1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1);
       pivot.getInverse(pivot);
       var headRotMatrix = new THREE.Matrix4().multiplyMatrices(torsoRotMatrix,head_pos);
+
+      allreset();
       headRotMatrix.multiply(pivot);
       head.setMatrix(headRotMatrix);
 
@@ -979,6 +1095,7 @@ function updateBody() {
       var pivot = new THREE.Matrix4().set(1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1);
       pivot.getInverse(pivot);
       
+      allreset();
       var tailRotMatrix = new THREE.Matrix4().multiplyMatrices(torsoRotMatrix,tail_pos);
       tailRotMatrix.multiply(pivot);
       tail.setMatrix(tailRotMatrix);
@@ -1016,6 +1133,8 @@ function updateBody() {
       //torso.setMatrix(torsoRotMatrix);
       var pivot = new THREE.Matrix4().set(1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1);
       pivot.getInverse(pivot);
+
+      allreset();
       
       var tailRotMatrix = new THREE.Matrix4().multiplyMatrices(torsoRotMatrix,tail_pos);
       tailRotMatrix.multiply(pivot);
@@ -1065,6 +1184,8 @@ function updateBody() {
       //var trans = new THREE.Matrix4().set(1,0,0,-0.5, 0,1,0,0, 0,0,1,-0.01, 0,0,0,1);
       var trans = new THREE.Matrix4().set(1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1);
 
+      allreset();
+
       var ten_rot_r_small1 = new THREE.Matrix4().multiplyMatrices(trans,r_ten_small1_pos_abs);
       var ten_rot_r_small2 = new THREE.Matrix4().multiplyMatrices(trans,r_ten_small2_pos_abs);
       var ten_rot_l_small1 = new THREE.Matrix4().multiplyMatrices(trans,l_ten_small1_pos_abs);
@@ -1088,6 +1209,8 @@ function updateBody() {
       var ten_rot_r_big8 = new THREE.Matrix4().multiplyMatrices(trans,r_ten_big8_pos_abs);
       var ten_rot_r_big9 = new THREE.Matrix4().multiplyMatrices(trans,r_ten_big9_pos_abs);
 
+      
+
       ten_rot_r_small1.multiply(rotateZ);
       ten_rot_r_small2.multiply(rotateZZ);
       ten_rot_l_small1.multiply(rotateZ);
@@ -1099,8 +1222,8 @@ function updateBody() {
       ten_rot_l_big5.multiply(rotateY);
       ten_rot_l_big6.multiply(rotateY);
       ten_rot_l_big7.multiply(rotateY);
-      ten_rot_l_big8.multiply(rotateY);
-      ten_rot_l_big9.multiply(rotateY);
+      ten_rot_l_big8.multiply(rotateZ);
+      ten_rot_l_big9.multiply(rotateZZ);
       ten_rot_r_big1.multiply(rotateYY);
       ten_rot_r_big2.multiply(rotateYY);
       ten_rot_r_big3.multiply(rotateYY);
@@ -1108,8 +1231,8 @@ function updateBody() {
       ten_rot_r_big5.multiply(rotateYY);
       ten_rot_r_big6.multiply(rotateYY);
       ten_rot_r_big7.multiply(rotateYY);
-      ten_rot_r_big8.multiply(rotateYY);
-      ten_rot_r_big9.multiply(rotateYY);
+      ten_rot_r_big8.multiply(rotateZ);
+      ten_rot_r_big9.multiply(rotateZZ);
       
       trans = trans.getInverse(trans);
       ten_rot_r_small1.multiply(trans);
@@ -1191,6 +1314,7 @@ function updateBody() {
       var rotRPaw1 = new THREE.Matrix4().multiplyMatrices(r_front_paw_pos_abs,rotateZZ);
       var rotLPaw = new THREE.Matrix4().multiplyMatrices(l_front_paw_pos_abs,rotateZ);
       var rotLPaw1 = new THREE.Matrix4().multiplyMatrices(l_front_paw_pos_abs,rotateZZ);
+      allreset();
       l_front_paw.setMatrix(rotLPaw);
       r_front_paw.setMatrix(rotRPaw);
      
@@ -1230,6 +1354,8 @@ function updateBody() {
                                             0, Math.cos(-p),-Math.sin(-p), 0, 
                                             0, Math.sin(-p), Math.cos(-p), 0,
                                             0,        0,         0,        1);
+
+      allreset();
 
       var torsoRotMatrix = new THREE.Matrix4().multiplyMatrices(torsoMatrix,rotateZ);
       //torso.setMatrix(torsoRotMatrix);
