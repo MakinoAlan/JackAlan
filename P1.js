@@ -1267,14 +1267,24 @@ function updateBody() {
       var trans = new THREE.Matrix4().set(1,0,0,0, 0,1,0,1, 0,0,1,0, 0,0,0,1);  
       var l_hand_rot = new THREE.Matrix4().multiplyMatrices(trans,l_hand_pos_abs);
       var r_foot_rot = new THREE.Matrix4().multiplyMatrices(trans,r_foot_pos_abs);
+      var r_hand_rot = new THREE.Matrix4().multiplyMatrices(trans,r_hand_pos_abs);
+      var l_foot_rot = new THREE.Matrix4().multiplyMatrices(trans,l_foot_pos_abs);
       
-      l_hand_rot.multiply(rotateZ);
-      r_foot_rot.multiply(rotateZ);
+      l_hand_rot.multiply(rotateZZ);
+      r_foot_rot.multiply(rotateZZ);
       trans.getInverse(trans);
       l_hand_rot.multiply(trans)
       l_hand.setMatrix(l_hand_rot); 
       r_foot_rot.multiply(trans)
       r_foot.setMatrix(r_foot_rot); 
+
+      r_hand_rot.multiply(rotateZ);
+      l_foot_rot.multiply(rotateZ);
+      r_hand_rot.multiply(trans)
+      r_hand.setMatrix(r_hand_rot); 
+      l_foot_rot.multiply(trans)
+      l_foot.setMatrix(l_foot_rot); 
+      
 
       var l_front_paw_rot = new THREE.Matrix4().multiplyMatrices(l_hand_rot,l_front_paw_pos);
       l_front_paw.setMatrix(l_front_paw_rot);
@@ -1305,6 +1315,36 @@ function updateBody() {
       r_rare_paw_claw4.setMatrix(r_rare_paw_claw4_rot);
       var r_rare_paw_claw5_rot = new THREE.Matrix4().multiplyMatrices(r_rare_paw_rot,r_rare_paw_claw_pos5);
       r_rare_paw_claw5.setMatrix(r_rare_paw_claw5_rot);
+      /*begin*/
+      var r_front_paw_rot = new THREE.Matrix4().multiplyMatrices(r_hand_rot,r_front_paw_pos);
+      r_front_paw.setMatrix(r_front_paw_rot);
+
+      var r_front_paw_claw1_rot = new THREE.Matrix4().multiplyMatrices(r_front_paw_rot,r_front_paw_claw_pos1);
+      r_front_paw_claw1.setMatrix(r_front_paw_claw1_rot);
+      var r_front_paw_claw2_rot = new THREE.Matrix4().multiplyMatrices(r_front_paw_rot,r_front_paw_claw_pos2);
+      r_front_paw_claw2.setMatrix(r_front_paw_claw2_rot);
+      var r_front_paw_claw3_rot = new THREE.Matrix4().multiplyMatrices(r_front_paw_rot,r_front_paw_claw_pos3);
+      r_front_paw_claw3.setMatrix(r_front_paw_claw3_rot);
+      var r_front_paw_claw4_rot = new THREE.Matrix4().multiplyMatrices(r_front_paw_rot,r_front_paw_claw_pos4);
+      r_front_paw_claw4.setMatrix(r_front_paw_claw4_rot);
+      var r_front_paw_claw5_rot = new THREE.Matrix4().multiplyMatrices(r_front_paw_rot,r_front_paw_claw_pos5);
+      r_front_paw_claw5.setMatrix(r_front_paw_claw5_rot);
+
+
+
+      var l_rare_paw_rot = new THREE.Matrix4().multiplyMatrices(l_foot_rot,l_rare_paw_pos);
+      l_rare_paw.setMatrix(l_rare_paw_rot);
+
+      var l_rare_paw_claw1_rot = new THREE.Matrix4().multiplyMatrices(l_rare_paw_rot,l_rare_paw_claw_pos1);
+      l_rare_paw_claw1.setMatrix(l_rare_paw_claw1_rot);
+      var l_rare_paw_claw2_rot = new THREE.Matrix4().multiplyMatrices(l_rare_paw_rot,l_rare_paw_claw_pos2);
+      l_rare_paw_claw2.setMatrix(l_rare_paw_claw2_rot);
+      var l_rare_paw_claw3_rot = new THREE.Matrix4().multiplyMatrices(l_rare_paw_rot,l_rare_paw_claw_pos3);
+      l_rare_paw_claw3.setMatrix(l_rare_paw_claw3_rot);
+      var l_rare_paw_claw4_rot = new THREE.Matrix4().multiplyMatrices(l_rare_paw_rot,l_rare_paw_claw_pos4);
+      l_rare_paw_claw4.setMatrix(l_rare_paw_claw4_rot);
+      var l_rare_paw_claw5_rot = new THREE.Matrix4().multiplyMatrices(l_rare_paw_rot,l_rare_paw_claw_pos5);
+      l_rare_paw_claw5.setMatrix(l_rare_paw_claw5_rot);
 
       var torsoRotMatrix = new THREE.Matrix4().multiplyMatrices(torsoMatrix,rotateY);
       //torso.setMatrix(torsoRotMatrix);
@@ -1484,6 +1524,7 @@ function updateBody() {
 
 // LISTEN TO KEYBOARD
 // Hint: Pay careful attention to how the keys already specified work!
+var count = 0;
 var keyboard = new THREEx.KeyboardState();
 var grid_state = false;
 var key;
@@ -1515,7 +1556,8 @@ keyboard.domElement.addEventListener('keydown',function(event){
   else if(keyboard.eventMatches(event,"D")){ 
     (key == "D")? init_animation(p1,p0,time_length) : (init_animation(0,Math.PI/4,1), key = "D")}
   else if(keyboard.eventMatches(event,"S")){ 
-    (key == "S")? init_animation(p1,p0,time_length) : (init_animation(0,Math.PI/4,1), key = "S")}
+  	count++;
+    ((key == "S") && (count != 1) )? init_animation(p1,-p1,time_length) : (init_animation(0,Math.PI/4,1), key = "S")}
 
   else if(keyboard.eventMatches(event," ")){
      smooth = !smooth;
