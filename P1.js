@@ -456,6 +456,58 @@ var animate = false; // animate?
 var smooth = true;
 
 function reset(){
+l_hand.setMatrix(l_hand_pos_abs);
+l_front_paw.setMatrix(l_front_paw_pos_abs);
+l_front_paw_claw1.setMatrix(l_front_paw_claw_pos1_abs);
+l_front_paw_claw2.setMatrix(l_front_paw_claw_pos2_abs);
+l_front_paw_claw3.setMatrix(l_front_paw_claw_pos3_abs);
+l_front_paw_claw4.setMatrix(l_front_paw_claw_pos4_abs);
+l_front_paw_claw5.setMatrix(l_front_paw_claw_pos5_abs);
+l_foot.setMatrix(l_foot_pos_abs);
+l_rare_paw.setMatrix(l_rare_paw_pos_abs);
+l_rare_paw_claw1.setMatrix(l_rare_paw_claw_pos1_abs);
+l_rare_paw_claw3.setMatrix(l_rare_paw_claw_pos3_abs);
+l_rare_paw_claw4.setMatrix(l_rare_paw_claw_pos4_abs);
+l_rare_paw_claw5.setMatrix(l_rare_paw_claw_pos5_abs);
+r_hand.setMatrix(r_hand_pos_abs);
+r_front_paw.setMatrix(r_front_paw_pos_abs);
+r_front_paw_claw1.setMatrix(r_front_paw_claw_pos1_abs);
+r_front_paw_claw2.setMatrix(r_front_paw_claw_pos2_abs);
+r_front_paw_claw3.setMatrix(r_front_paw_claw_pos3_abs);
+r_front_paw_claw4.setMatrix(r_front_paw_claw_pos4_abs);
+r_front_paw_claw5.setMatrix(r_front_paw_claw_pos5_abs);
+r_foot.setMatrix(r_foot_pos_abs);
+r_rare_paw.setMatrix(r_rare_paw_pos_abs);
+r_rare_paw_claw1.setMatrix(r_rare_paw_claw_pos1_abs);
+r_rare_paw_claw2.setMatrix(r_rare_paw_claw_pos2_abs);
+r_rare_paw_claw3.setMatrix(r_rare_paw_claw_pos3_abs);
+r_rare_paw_claw4.setMatrix(r_rare_paw_claw_pos4_abs);
+r_rare_paw_claw5.setMatrix(r_rare_paw_claw_pos5_abs);
+tail.setMatrix(tail_pos_abs);
+head.setMatrix(head_pos_abs);
+nose.setMatrix(nose_pos_abs);
+l_ten_big1.setMatrix(l_ten_big1_pos_abs);
+l_ten_big2.setMatrix(l_ten_big2_pos_abs);
+l_ten_big3.setMatrix(l_ten_big3_pos_abs);
+l_ten_big4.setMatrix(l_ten_big4_pos_abs);
+l_ten_big5.setMatrix(l_ten_big5_pos_abs);
+l_ten_big6.setMatrix(l_ten_big6_pos_abs);
+l_ten_big7.setMatrix(l_ten_big7_pos_abs);
+l_ten_big8.setMatrix(l_ten_big8_pos_abs);
+l_ten_big9.setMatrix(l_ten_big9_pos_abs);
+l_ten_small1.setMatrix(l_ten_small1_pos_abs); 
+l_ten_small2.setMatrix(l_ten_small2_pos_abs);
+r_ten_big1.setMatrix(r_ten_big1_pos_abs);
+r_ten_big2.setMatrix(r_ten_big2_pos_abs);
+r_ten_big3.setMatrix(r_ten_big3_pos_abs);
+r_ten_big4.setMatrix(r_ten_big4_pos_abs);
+r_ten_big5.setMatrix(r_ten_big5_pos_abs);
+r_ten_big6.setMatrix(r_ten_big6_pos_abs);
+r_ten_big7.setMatrix(r_ten_big7_pos_abs);
+r_ten_big8.setMatrix(r_ten_big8_pos_abs);
+r_ten_big9.setMatrix(r_ten_big9_pos_abs);
+r_ten_small1.setMatrix(r_ten_small1_pos_abs); 
+r_ten_small2.setMatrix(r_ten_small2_pos_abs);
 
 }
 
